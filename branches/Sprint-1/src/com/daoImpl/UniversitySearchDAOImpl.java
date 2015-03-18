@@ -5,8 +5,14 @@ import java.sql.Statement;
 
 import com.connection.MySQLConnection;
 import com.dao.UniversitySearchDAO;
+
+
 import com.dto.UniversityDTO;
 
+/**
+ * @author Hemanth
+ *
+ */
 public class UniversitySearchDAOImpl  extends MySQLConnection implements UniversitySearchDAO{
 
 	@Override
