@@ -11,6 +11,10 @@ public class UniversityDTO {
 	private String universityState;
 	private int minGreQuant;
 	private int minGreVerbal;
+	private String address;
+	private String eMail;
+	private long contact;
+	
 	/**
 	 * @return the universityName
 	 */
@@ -82,5 +86,41 @@ public class UniversityDTO {
 	 */
 	public void setMinGreVerbal(int minGreVerbal) {
 		this.minGreVerbal = minGreVerbal;
+	}
+	/**
+	 * @return the address
+	 */
+	public String getAddress() {
+		return address;
+	}
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	/**
+	 * @return the eMail
+	 */
+	public String geteMail() {
+		return eMail;
+	}
+	/**
+	 * @param eMail the eMail to set
+	 */
+	public void seteMail(String eMail) {
+		this.eMail = eMail;
+	}
+	/**
+	 * @return the contact
+	 */
+	public long getContact() {
+		return contact;
+	}
+	/**
+	 * @param contact the contact to set
+	 */
+	public void setContact(long contact) {
+		this.contact = contact;
 	}
 }
