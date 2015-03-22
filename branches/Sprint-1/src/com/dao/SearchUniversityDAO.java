@@ -1,5 +1,7 @@
 package com.dao;
 
+import java.util.List;
+
 import com.dto.UniversityDTO;
 
 /**
@@ -7,5 +9,5 @@ import com.dto.UniversityDTO;
  *
  */
 public interface SearchUniversityDAO {
-	public UniversityDTO fetchUniversityDetails(UniversityDTO universityDTO);
+	public List<UniversityDTO> fetchUniversityDetails(UniversityDTO universityDTO);
 }

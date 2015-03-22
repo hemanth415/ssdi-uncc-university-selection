@@ -1,7 +1,9 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,13 +42,28 @@ public class SearchUniversityController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//if(session != null){
-		System.out.println("Name:     "+request.getParameter("universityName"));
-		if(request.getParameter("universityName") != null){
+		System.out.println("U Country:     "+request.getParameter("uCountry"));
+		System.out.println("U State:     "+request.getParameter("uState"));
+		//if(request.getParameter("universityName") != null){
 			UniversityDTO universityDTO = new UniversityDTO();
+			boolean result = false;
 			searchUniversityDAO = new SearchUniversityDAOImpl();
-			universityDTO.setUniversityName("Charlotte");
-			searchUniversityDAO.fetchUniversityDetails(universityDTO);
-		}
+			universityDTO.setUniversityState(request.getParameter("uState"));
+			universityDTO.setUniversityCountry(request.getParameter("uCountry"));
+			List<UniversityDTO> list=searchUniversityDAO.fetchUniversityDetails(universityDTO);
+			RequestDispatcher rd = null;
+			if(!list.isEmpty()){
+				for(UniversityDTO dto:list){
+					System.out.println("Name: "+dto.getUniversityName());
+				}
+				result = true;
+			}
+			request.setAttribute("result", result);
+			request.setAttribute("uniList", list);
+			rd = getServletContext().getRequestDispatcher("/universitySearch.jsp");
+			rd.forward(request, response);
+			
+		//}
 		//}
 	}
 
