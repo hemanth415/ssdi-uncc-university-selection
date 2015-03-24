@@ -16,19 +16,19 @@
 				University Name :	
 			</td>
 			<td>
-				<input type="text" name="uName" value=${requestScope.uName}>	
+				<input type="text" name="uName" value="${requestScope.uName}">	
 			</td>
 			<td>
 				Country :	
 			</td>
 			<td>
-				<input type="text" name="uCountry" value=${requestScope.uCountry}>	
+				<input type="text" name="uCountry" value="${requestScope.uCountry}">	
 			</td>
 			<td>
 				State :	
 			</td>
 			<td>
-				<input type="text" name="uState" value=${requestScope.uState}>	
+				<input type="text" name="uState" value="${requestScope.uState}">	
 			</td>
 		</tr>
 	</table>

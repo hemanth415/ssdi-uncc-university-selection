@@ -48,18 +48,26 @@ public class SearchUniversityController extends HttpServlet {
 			UniversityDTO universityDTO = new UniversityDTO();
 			boolean result = false;
 			searchUniversityDAO = new SearchUniversityDAOImpl();
-			universityDTO.setUniversityState(request.getParameter("uState"));
-			universityDTO.setUniversityCountry(request.getParameter("uCountry"));
-			List<UniversityDTO> list=searchUniversityDAO.fetchUniversityDetails(universityDTO);
+			List<UniversityDTO> resultList = null;
+			if(request.getParameter("uName") != null && !request.getParameter("uName").isEmpty()){
+				searchUniversityDAO = new SearchUniversityDAOImpl();
+				universityDTO.setUniversityName(request.getParameter("uName"));
+				resultList=searchUniversityDAO.fetchUniversityByName(universityDTO);
+			}else if (request.getParameter("uState") != null && request.getParameter("uCountry") != null){
+				searchUniversityDAO = new SearchUniversityDAOImpl();
+				universityDTO.setUniversityState(request.getParameter("uState"));
+				universityDTO.setUniversityCountry(request.getParameter("uCountry"));
+				resultList=searchUniversityDAO.fetchUniversitiesByCntryState(universityDTO);
+			}
 			RequestDispatcher rd = null;
-			if(!list.isEmpty()){
-				for(UniversityDTO dto:list){
+			if(!resultList.isEmpty()){
+				for(UniversityDTO dto:resultList){
 					System.out.println("Name: "+dto.getUniversityName());
 				}
 				result = true;
 			}
 			request.setAttribute("result", result);
-			request.setAttribute("uniList", list);
+			request.setAttribute("uniList", resultList);
 			rd = getServletContext().getRequestDispatcher("/universitySearch.jsp");
 			rd.forward(request, response);
 			
