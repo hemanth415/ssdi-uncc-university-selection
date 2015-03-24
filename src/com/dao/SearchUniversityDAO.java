@@ -9,5 +9,6 @@ import com.dto.UniversityDTO;
  *
  */
 public interface SearchUniversityDAO {
-	public List<UniversityDTO> fetchUniversityDetails(UniversityDTO universityDTO);
+	public List<UniversityDTO> fetchUniversitiesByCntryState(UniversityDTO universityDTO);
+	public List<UniversityDTO> fetchUniversityByName(UniversityDTO universityDTO);
 }
