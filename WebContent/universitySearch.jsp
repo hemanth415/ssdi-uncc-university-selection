@@ -38,6 +38,9 @@
 </div>
 <div>
 	<c:if test="${requestScope.result == true}">
+	<c:if test="${requestScope.message != null}">
+		<c:out value="${requestScope.message}"></c:out>
+	</c:if>
 		<table>
 			<tr>
 				<th>
@@ -46,10 +49,23 @@
 				<th>
 					University Description
 				</th>
+				<th>
+					University Address
+				</th>
+				<th>
+					University Contact
+				</th>
+				<th>
+					University E-Mail
+				</th>
 			</tr>
 			<c:forEach items="${requestScope.uniList}" var="uni">
 			<tr>
 				<td><c:out value="${uni.universityName}"></c:out></td>
+				<td><c:out value="${uni.universityDesc}"></c:out></td>
+				<td><c:out value="${uni.address}"></c:out></td>
+				<td><c:out value="${uni.contact}"></c:out></td>
+				<td><c:out value="${uni.email}"></c:out></td>
 				<td><c:out value="${uni.universityDesc}"></c:out></td>
 			</tr>
 			</c:forEach>
