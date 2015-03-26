@@ -9,6 +9,7 @@
 </head>
 <body>
 <form action="SearchUniversityController" method="post">
+<center>
 <div>
 	<table>
 		<tr>
@@ -33,29 +34,43 @@
 		</tr>
 	</table>
 </div>
+<br>
+<br>
 <div>
-		<input type="submit" value="Search"/>
+<table>
+<tr>
+<td>
+	<input type="submit" value="Search"/>
+</td>
+<td>
+	<input type="reset" value="Reset"/>
+</td>
+</tr>
+</table>
 </div>
+<br>
 <div>
 	<c:if test="${requestScope.result == true}">
 	<c:if test="${requestScope.message != null}">
 		<c:out value="${requestScope.message}"></c:out>
 	</c:if>
+	<br>
+	<br>
 		<table>
-			<tr>
-				<th>
+			<tr align="left" bgcolor="blue">
+				<th align="left" width="20%">
 					University Name
 				</th>
-				<th>
+				<th align="left" width="35%">
 					University Description
 				</th>
-				<th>
+				<th align="left" width="20%">
 					University Address
 				</th>
-				<th>
+				<th align="left" width="15%">
 					University Contact
 				</th>
-				<th>
+				<th align="left" width="10%">
 					University E-Mail
 				</th>
 			</tr>
@@ -65,13 +80,13 @@
 				<td><c:out value="${uni.universityDesc}"></c:out></td>
 				<td><c:out value="${uni.address}"></c:out></td>
 				<td><c:out value="${uni.contact}"></c:out></td>
-				<td><c:out value="${uni.email}"></c:out></td>
-				<td><c:out value="${uni.universityDesc}"></c:out></td>
+				<td><c:out value="${uni.eMail}"></c:out></td>
 			</tr>
 			</c:forEach>
 		</table>	
 	</c:if>
 </div>
+</center>
 	</form>
 </body>
 </html>
