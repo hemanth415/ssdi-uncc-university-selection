@@ -19,7 +19,7 @@
 	       </h4>
 		   
 	
-	<a href="entersearchuniversitieslink">
+	<a href="/Sprint-1/universitySearch.jsp">
 	   <b>
      <h2>SEARCH UNIVERSITIES</h2>
 	   </b>
