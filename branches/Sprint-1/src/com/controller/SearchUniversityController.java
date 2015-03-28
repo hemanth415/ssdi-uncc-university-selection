@@ -66,7 +66,7 @@ public class SearchUniversityController extends HttpServlet {
 		} else if (ValidatorUtils.validateString(request.getParameter("uCountry"))
 				&& ValidatorUtils.validateString(request.getParameter("uState"))) {
 			searchUniversityDAO = new SearchUniversityDAOImpl();
-			if (ValidatorUtils.validateCountry(request.getParameter("uCountry"))) {
+			if (ValidatorUtils.validateCountry(request.getParameter("uCountry").trim())) {
 				if (ValidatorUtils.validateCountryState(
 						request.getParameter("uCountry").trim(), request.getParameter("uState").trim())) {
 					universityDTO.setUniversityState(request.getParameter("uState").trim());
