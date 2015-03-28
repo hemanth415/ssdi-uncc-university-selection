@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>University Search</title>
 </head>
-<body>
+<body background="images/snowflakes_on_light_purple.gif">
 <form action="SearchUniversityController" method="post">
 <center>
 <div>
