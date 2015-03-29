@@ -16,24 +16,39 @@ public class BankerRegistrationDAOImpl extends MySQLConnection implements Banker
 	public boolean bankerRegistration(BankerDTO bankerDTO) {
 		// TODO Auto-generated method stub
 		Connection conn = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement bankerPreparedStatement = null;
+		PreparedStatement loginPreparedStatement = null;
 		
 		try{
 			conn = getConnection();
-			preparedStatement = conn.prepareStatement("INSERT INTO bankers (first_name, last_name, bank_name, bank_address, "
+			bankerPreparedStatement = conn.prepareStatement("INSERT INTO bankers (first_name, last_name, bank_name, bank_address, "
 					+ "bank_contact_no, bank_email_id, bank_location_id, bank_zip_code, email_id, contact_no) "
 					+ "values(?,?,?,?,?,?,?,?,?,?)");
-			preparedStatement.setString(1, bankerDTO.getFirstName());
-			preparedStatement.setString(2, bankerDTO.getLastName());
-			preparedStatement.setString(3, bankerDTO.getBankName());
-			preparedStatement.setString(4, bankerDTO.getBankAddress());
-			preparedStatement.setLong(5, bankerDTO.getBankContactNum());
-			preparedStatement.setString(6, bankerDTO.getBankEmailId());
-			preparedStatement.setInt(7, 103);
-			preparedStatement.setInt(8, bankerDTO.getBankZipCode());
-			preparedStatement.setString(9, bankerDTO.getBankerEmailId());
-			preparedStatement.setLong(10, bankerDTO.getBankerContactNum());
-			i = preparedStatement.executeUpdate();
+			bankerPreparedStatement.setString(1, bankerDTO.getFirstName());
+			bankerPreparedStatement.setString(2, bankerDTO.getLastName());
+			bankerPreparedStatement.setString(3, bankerDTO.getBankName());
+			bankerPreparedStatement.setString(4, bankerDTO.getBankAddress());
+			bankerPreparedStatement.setLong(5, bankerDTO.getBankContactNum());
+			bankerPreparedStatement.setString(6, bankerDTO.getBankEmailId());
+			bankerPreparedStatement.setInt(7, 103);
+			bankerPreparedStatement.setInt(8, bankerDTO.getBankZipCode());
+			bankerPreparedStatement.setString(9, bankerDTO.getBankerEmailId());
+			bankerPreparedStatement.setLong(10, bankerDTO.getBankerContactNum());
+			i = bankerPreparedStatement.executeUpdate();
+			
+			if(i != 0){
+				loginPreparedStatement = conn.prepareStatement("INSERT INTO login_cred (login_id, login_password, user_type) VALUES(?,?,?)");
+				loginPreparedStatement.setString(1, bankerDTO.getUserName());
+				loginPreparedStatement.setString(2, bankerDTO.getPassword());
+				loginPreparedStatement.setString(3, "B");
+				i = loginPreparedStatement.executeUpdate();
+				
+				if(i == 0) {
+					System.out.println("Login credentials insertion failed");
+					return false;
+				}
+			}
+			
 			
 		} catch(Exception e){
 			System.out.println(e+"");
