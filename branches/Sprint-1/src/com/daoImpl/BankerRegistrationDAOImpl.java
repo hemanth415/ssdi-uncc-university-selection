@@ -37,6 +37,7 @@ public class BankerRegistrationDAOImpl extends MySQLConnection implements Banker
 			i = bankerPreparedStatement.executeUpdate();
 			
 			if(i != 0){
+				System.out.println("Insert data in to bankers table success");
 				loginPreparedStatement = conn.prepareStatement("INSERT INTO login_cred (login_id, login_password, user_type) VALUES(?,?,?)");
 				loginPreparedStatement.setString(1, bankerDTO.getUserName());
 				loginPreparedStatement.setString(2, bankerDTO.getPassword());
@@ -44,7 +45,7 @@ public class BankerRegistrationDAOImpl extends MySQLConnection implements Banker
 				i = loginPreparedStatement.executeUpdate();
 				
 				if(i == 0) {
-					System.out.println("Login credentials insertion failed");
+					System.out.println("Insert Login credentials in to login_cred table failed");
 					return false;
 				}
 			}
