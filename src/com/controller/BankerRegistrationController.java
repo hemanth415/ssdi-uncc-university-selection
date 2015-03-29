@@ -55,7 +55,7 @@ public class BankerRegistrationController extends HttpServlet {
 		bankerDTO.setBankEmailId(request.getParameter("bankEmail").trim());
 		
 		System.out.println("Test entry");
-		System.out.println("First name = " + bankerDTO.getFirstName());
+		System.out.println(bankerDTO.getFirstName());
 		System.out.println(bankerDTO.getLastName());
 		System.out.println(bankerDTO.getUserName());
 		System.out.println(bankerDTO.getPassword());
