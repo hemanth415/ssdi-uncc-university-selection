@@ -3,43 +3,36 @@
 <html>  
    <head>  
      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">  
-       <title>Welcome <%=session.getAttribute("name")%></title>  
+       <title>Welcome</title>  
    </head>  
  <body background="images/snowflakes_on_light_purple.gif">
           <h1>Your University Your Bank</h1>
-
-    
            <h4 align="right">  
-                              Hello,  
-                                        <%=session.getAttribute("name")%> <a href="LOGOUTlink">
-																			<b>
-																					LOGOUT
-																			</b>
-																		</a>
+                						Hello,<%=session.getAttribute("user")%>
+                						<br> 
+                						<a href="LOGOUTlink">
+										<b>
+														LOGOUT
+										</b>
+										</a>
 	       </h4>
-		   
-	
+	<br>
 	<a href="/Sprint-1/universitySearch.jsp">
 	   <b>
-     <h2>SEARCH UNIVERSITIES</h2>
+     		SEARCH UNIVERSITIES
 	   </b>
 	</a>
+	<br>
 	<a href="edityourprofilelink" >
 	   <b>
-	      <h2>
 	          PROFILE
-	      </h2>
 	   </b>
 	</a>
-		<a href="LINK TO LIST OF BANKERS PROVIDING LOANS" >
-	     <b>
-	       <h2>
+	<br>
+	<a href="LINK TO LIST OF BANKERS PROVIDING LOANS" >
+	  <b>
 	          EDUCATION LOANS
-	       </h2>
-	     </b>
-	    </a>
-	
-		
+	  </b>
+	</a>
  </body>  
 </html>
- 
