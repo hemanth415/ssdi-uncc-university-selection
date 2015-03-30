@@ -10,7 +10,7 @@ public class UserDTO{
 	private String lastName;
 	private String bankName;
 	private String bankAddress;
-	private String bankContactNo;
+	private long bankContactNo;
 	private String bankEmailId;
 	private String address;
 	private int bankZipCode;
@@ -116,13 +116,13 @@ public class UserDTO{
 	/**
 	 * @return the bankContactNo
 	 */
-	public String getBankContactNo() {
+	public long getBankContactNo() {
 		return bankContactNo;
 	}
 	/**
 	 * @param bankContactNo the bankContactNo to set
 	 */
-	public void setBankContactNo(String bankContactNo) {
+	public void setBankContactNo(long bankContactNo) {
 		this.bankContactNo = bankContactNo;
 	}
 	/**
