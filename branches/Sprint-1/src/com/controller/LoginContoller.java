@@ -62,13 +62,19 @@ public class LoginContoller extends HttpServlet {
             		if(userRole == 'B'){
             			userDTO.setUserRole(userRole);
             			loginDao.fetchBankerDetails(userDTO);
-            			session.setAttribute("user", request.getParameter("userName"));
+            			System.out.println(userDTO.getFirstName()+","+userDTO.getLastName());
+            			System.out.println(userRole);
+            			session.setAttribute("userName", userDTO.getFirstName()+","+userDTO.getLastName());
+            			request.setAttribute("userRole", userRole);
             			requestDispatcher = request.getRequestDispatcher("welcome.jsp");
             		}else if(userRole == 'S'){
             			userDTO.setUserRole(userRole);
             			loginDao.fetchStudentDetails(userDTO);
-            			session.setAttribute("user", request.getParameter("userName"));
-            			requestDispatcher = request.getRequestDispatcher("welcome.jsp");
+            			System.out.println(userDTO.getFirstName()+","+userDTO.getLastName());
+            			System.out.println(userRole);
+            			session.setAttribute("userName", userDTO.getFirstName()+","+userDTO.getLastName());
+            			request.setAttribute("userRole", userRole);
+            			requestDispatcher = request.getRequestDispatcher("studentHome.jsp");
             		}else{
             			message = "Invalid user details.";
             			requestDispatcher = request.getRequestDispatcher("index.jsp");
@@ -87,6 +93,7 @@ public class LoginContoller extends HttpServlet {
     		e.printStackTrace();
     		request.setAttribute("message", e.getMessage());
     		requestDispatcher = request.getRequestDispatcher("index.jsp");
+    		requestDispatcher.forward(request,response);
     	}
 	}
 }

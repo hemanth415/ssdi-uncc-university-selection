@@ -2,7 +2,6 @@ package com.daoImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 import com.connection.MySQLConnection;
 import com.dao.BankerRegistrationDAO;
@@ -39,7 +38,7 @@ public class BankerRegistrationDAOImpl extends MySQLConnection implements Banker
 			if(i != 0){
 				System.out.println("Insert data in to bankers table success");
 				loginPreparedStatement = conn.prepareStatement("INSERT INTO login_cred (login_id, login_password, user_type) VALUES(?,?,?)");
-				loginPreparedStatement.setString(1, bankerDTO.getUserName());
+				loginPreparedStatement.setString(1, bankerDTO.getBankerEmailId());
 				loginPreparedStatement.setString(2, bankerDTO.getPassword());
 				loginPreparedStatement.setString(3, "B");
 				i = loginPreparedStatement.executeUpdate();

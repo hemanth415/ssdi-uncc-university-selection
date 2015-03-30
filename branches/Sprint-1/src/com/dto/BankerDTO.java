@@ -1,6 +1,5 @@
 package com.dto;
 
-import java.math.BigDecimal;
 
 /**
  * @author Hemchand
