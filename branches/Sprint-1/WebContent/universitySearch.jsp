@@ -49,11 +49,11 @@
 </table>
 </div>
 <br>
-<div>
-	<c:if test="${requestScope.result == true}">
 	<c:if test="${requestScope.message != null}">
 		<c:out value="${requestScope.message}"></c:out>
 	</c:if>
+<div>
+	<c:if test="${requestScope.result == true}">
 	<br>
 	<br>
 		<table>
