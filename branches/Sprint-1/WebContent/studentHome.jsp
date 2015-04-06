@@ -18,20 +18,20 @@
 	<table>
 		<tr>
 			<th>
-				<a href="/Sprint-1/welcome.jsp"> <b> HOME </b></a>
+				<a href="/Sprint-1/studentHome.jsp"> <b> HOME </b></a>
 			</th>
 			<th>
 				<a href="/Sprint-1/universitySearch.jsp"> <b> SEARCH UNIVERSITIES </b></a>
 			</th>
 			<th>
-				<a href="edityourprofilelink"> <b> STUDENT PROFILES </b></a>
+				<a href="searchBank"> <b> SEARCH BANKS </b></a>
 			</th>
 			<th>
-			<a href="postLink"> <b> POSTS </b></a>
+			<a href="edityourprofilelink"> <b> VIEW PROFILE </b></a>
 			</th>	
 		</tr>
 	</table>
 	<br>
-	<br>
+	<br>	
 </body>
 </html>
