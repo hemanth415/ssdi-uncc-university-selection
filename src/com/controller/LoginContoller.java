@@ -65,7 +65,7 @@ public class LoginContoller extends HttpServlet {
             			System.out.println(userDTO.getFirstName()+","+userDTO.getLastName());
             			System.out.println(userRole);
             			session.setAttribute("userName", userDTO.getFirstName()+","+userDTO.getLastName());
-            			request.setAttribute("userRole", userRole);
+            			session.setAttribute("userRole", userRole);
             			requestDispatcher = request.getRequestDispatcher("welcome.jsp");
             		}else if(userRole == 'S'){
             			userDTO.setUserRole(userRole);
@@ -73,7 +73,7 @@ public class LoginContoller extends HttpServlet {
             			System.out.println(userDTO.getFirstName()+","+userDTO.getLastName());
             			System.out.println(userRole);
             			session.setAttribute("userName", userDTO.getFirstName()+","+userDTO.getLastName());
-            			request.setAttribute("userRole", userRole);
+            			session.setAttribute("userRole", userRole);
             			requestDispatcher = request.getRequestDispatcher("studentHome.jsp");
             		}else{
             			message = "Invalid user details.";

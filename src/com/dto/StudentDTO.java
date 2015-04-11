@@ -8,6 +8,7 @@ public class StudentDTO {
 	private String address;
 	private int zipCode;
 	private long studentContactNum;
+	private String appliedTerm;
 	
 	public String getFirstName() {
 		return firstName;
@@ -50,5 +51,11 @@ public class StudentDTO {
 	}
 	public void setStudentContactNum(long studentContactNum) {
 		this.studentContactNum = studentContactNum;
+	}
+	public String getAppliedTerm() {
+		return appliedTerm;
+	}
+	public void setAppliedTerm(String appliedTerm) {
+		this.appliedTerm = appliedTerm;
 	}
 }
