@@ -5,10 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>University Search</title>
+<style type="text/css">
+tr.even {
+	background: #80CEB9;
+}
+
+tr.odd {
+	background: #41AAC4;
+}
+</style>
+<title>Insert title here</title>
 </head>
 <body background="images/snowflakes_on_light_purple.gif">
-	<form action="SearchUniversityController" method="post">
+	<form action="StudentProfileController" method="post">
 		<center>
 			<div>
 				<h1>Your University Your Bank</h1>
@@ -40,7 +49,7 @@
 											SEARCH UNIVERSITIES </b></a></th>
 								<th><a href="/Sprint-1/studentProfiles.jsp"> <b>
 											STUDENT PROFILES </b></a></th>
-								<th><a href="postLink"> <b> POSTS </b></a></th>
+								<th><a href=""> <b> POSTS </b></a></th>
 							</tr>
 						</table>
 					</c:otherwise>
@@ -50,50 +59,40 @@
 			<div>
 				<table>
 					<tr>
-						<td>University Name :</td>
-						<td><input type="text" name="uName"
-							value="${requestScope.uName}"></td>
-						<td>Country :</td>
-						<td><input type="text" name="uCountry"
-							value="${requestScope.uCountry}"></td>
-						<td>State :</td>
-						<td><input type="text" name="uState"
-							value="${requestScope.uState}"></td>
-					</tr>
+						<td><input type="checkbox" value="Spring-2015"
+							name="spring2015" id="spring2015" /></td>
+						<td>Spring 2015</td>
+						<td><input type="checkbox" value="Fall-2015" name="fall2015"
+							id="fall2015" /></td>
+						<td>Fall 2015</td>
 				</table>
-			</div>
-			<br> <br>
-			<div>
+				<br>
 				<table>
 					<tr>
-						<td><input type="submit" value="Search" /></td>
-						<td><input type="reset" value="Reset" /></td>
+						<td><input type="submit" value="Fetch Profiles" /></td>
 					</tr>
 				</table>
 			</div>
 			<br>
-			<c:if test="${requestScope.message != null}">
-				<c:out value="${requestScope.message}"></c:out>
+			<c:if test="${requestScope.studentMessage != null}">
+				<c:out value="${requestScope.studentMessage}"></c:out>
 			</c:if>
 			<div>
-				<c:if test="${requestScope.result == true}">
+				<c:if test="${requestScope.studentResult == true}">
 					<br>
 					<br>
 					<table>
-						<tr align="left" bgcolor="blue">
-							<th align="left" width="20%">University Name</th>
-							<th align="left" width="35%">University Description</th>
-							<th align="left" width="20%">University Address</th>
-							<th align="left" width="15%">University Contact</th>
-							<th align="left" width="10%">University E-Mail</th>
+						<tr align="left" bgcolor="2F343A">
+							<th align="left"><font color="white">Student Name</font></th>
+							<th align="left"><font color="white">Address</font></th>
+							<th align="left"><font color="white">Applied Term</font></th>
 						</tr>
-						<c:forEach items="${requestScope.uniList}" var="uni">
-							<tr>
-								<td><c:out value="${uni.universityName}"></c:out></td>
-								<td><c:out value="${uni.universityDesc}"></c:out></td>
-								<td><c:out value="${uni.address}"></c:out></td>
-								<td><c:out value="${uni.contact}"></c:out></td>
-								<td><c:out value="${uni.eMail}"></c:out></td>
+						<c:forEach items="${requestScope.studentList}" var="student"
+							varStatus="loop">
+							<tr class="${loop.index % 2 == 0 ? 'even' : 'odd'}">
+								<td><c:out value="${student.firstName}"></c:out></td>
+								<td><c:out value="${student.address}"></c:out></td>
+								<td><c:out value="${student.appliedTerm}"></c:out></td>
 							</tr>
 						</c:forEach>
 					</table>

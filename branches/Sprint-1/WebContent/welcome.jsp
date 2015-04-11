@@ -10,7 +10,7 @@
 	<h1>Your University Your Bank</h1>
 	<h4 align="right">
 		Hello <%=session.getAttribute("userName")%>
-		<br> <a href="LogOutlink"> <b> LOGOUT </b>
+		<br> <a href=""> <b> LOGOUT </b>
 		</a>
 	</h4>
 	<br>
@@ -24,10 +24,10 @@
 				<a href="/Sprint-1/universitySearch.jsp"> <b> SEARCH UNIVERSITIES </b></a>
 			</th>
 			<th>
-				<a href="edityourprofilelink"> <b> STUDENT PROFILES </b></a>
+				<a href="/Sprint-1/studentProfiles.jsp"> <b> STUDENT PROFILES </b></a>
 			</th>
 			<th>
-			<a href="postLink"> <b> POSTS </b></a>
+			<a href=""> <b> POSTS </b></a>
 			</th>	
 		</tr>
 	</table>

@@ -7,6 +7,7 @@
 <title>Banker Home</title>
 </head>
 <body background="images/snowflakes_on_light_purple.gif">
+<center>
 	<h1>Your University Your Bank</h1>
 	<h4 align="right">
 		Hello <%=session.getAttribute("userName")%>
@@ -24,14 +25,15 @@
 				<a href="/Sprint-1/universitySearch.jsp"> <b> SEARCH UNIVERSITIES </b></a>
 			</th>
 			<th>
-				<a href="searchBank"> <b> SEARCH BANKS </b></a>
+				<a href=""> <b> SEARCH BANKS </b></a>
 			</th>
 			<th>
-			<a href="edityourprofilelink"> <b> VIEW PROFILE </b></a>
+			<a href=""> <b> VIEW PROFILE </b></a>
 			</th>	
 		</tr>
 	</table>
 	<br>
-	<br>	
+	<br>
+</center>	
 </body>
 </html>
