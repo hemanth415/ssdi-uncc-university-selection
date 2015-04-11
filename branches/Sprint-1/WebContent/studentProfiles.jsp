@@ -59,6 +59,12 @@ tr.odd {
 			<div>
 				<table>
 					<tr>
+						<th colspan="4"><b>Select the term(s) to view Student
+								Profile(s):</b></th>
+					</tr>
+					<tr>
+					</tr>
+					<tr>
 						<td><input type="checkbox" value="Spring-2015"
 							name="spring2015" id="spring2015" /></td>
 						<td>Spring 2015</td>

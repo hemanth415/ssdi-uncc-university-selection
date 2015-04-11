@@ -7,31 +7,26 @@
 <title>Banker Home</title>
 </head>
 <body background="images/snowflakes_on_light_purple.gif">
-	<h1>Your University Your Bank</h1>
-	<h4 align="right">
-		Hello <%=session.getAttribute("userName")%>
-		<br> <a href=""> <b> LOGOUT </b>
-		</a>
-	</h4>
-	<br>
-	<br>
-	<table>
-		<tr>
-			<th>
-				<a href="/Sprint-1/welcome.jsp"> <b> HOME </b></a>
-			</th>
-			<th>
-				<a href="/Sprint-1/universitySearch.jsp"> <b> SEARCH UNIVERSITIES </b></a>
-			</th>
-			<th>
-				<a href="/Sprint-1/studentProfiles.jsp"> <b> STUDENT PROFILES </b></a>
-			</th>
-			<th>
-			<a href=""> <b> POSTS </b></a>
-			</th>	
-		</tr>
-	</table>
-	<br>
-	<br>
+	<div align="center">
+		<h1>Your University Your Bank</h1>
+		<h4 align="right">
+			Hello
+			<%=session.getAttribute("userName")%>
+			<br> <a href=""> <b> LOGOUT </b>
+			</a>
+		</h4>
+		<br> <br>
+		<table>
+			<tr>
+				<th><a href="/Sprint-1/welcome.jsp"> <b> HOME </b></a></th>
+				<th><a href="/Sprint-1/universitySearch.jsp"> <b>
+							SEARCH UNIVERSITIES </b></a></th>
+				<th><a href="/Sprint-1/studentProfiles.jsp"> <b>
+							STUDENT PROFILES </b></a></th>
+				<th><a href=""> <b> POSTS </b></a></th>
+			</tr>
+		</table>
+		<br>
+	</div>
 </body>
 </html>
