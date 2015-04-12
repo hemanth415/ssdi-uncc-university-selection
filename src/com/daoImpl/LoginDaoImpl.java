@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import com.connection.MySQLConnection;
 import com.dao.LoginDao;
 import com.dto.UserDTO;
+import com.utils.Constants;
 
 public class LoginDaoImpl extends MySQLConnection implements LoginDao {
 
@@ -20,7 +21,7 @@ public class LoginDaoImpl extends MySQLConnection implements LoginDao {
 		try {
 			connection = getConnection();
 			preparedStatement = connection
-					.prepareStatement("select user_type from login_cred where login_id=? and login_password=?");
+					.prepareStatement(Constants.FETCH_USER_ROLE);
 			preparedStatement.setString(1, userDTO.getUserName());
 			preparedStatement.setString(2, userDTO.getUserPassword());
 			resultSet = preparedStatement.executeQuery();
@@ -52,7 +53,7 @@ public class LoginDaoImpl extends MySQLConnection implements LoginDao {
 		try {
 			connection = getConnection();
 			preparedStatement = connection
-					.prepareStatement("select * from bankers where email_id=?");
+					.prepareStatement(Constants.FETCH_BANKER_DETAILS);
 			preparedStatement.setString(1, userDTO.getUserName());
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet != null && resultSet.next()) {
@@ -93,7 +94,7 @@ public class LoginDaoImpl extends MySQLConnection implements LoginDao {
 		try {
 			connection = getConnection();
 			preparedStatement = connection
-					.prepareStatement("select * from students where email_id=?");
+					.prepareStatement(Constants.FETCH_STUDENT_DETAILS);
 			preparedStatement.setString(1, userDTO.getUserName());
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet != null && resultSet.next()) {

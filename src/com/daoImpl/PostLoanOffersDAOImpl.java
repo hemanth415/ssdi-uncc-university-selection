@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import com.connection.MySQLConnection;
 import com.dao.PostLoanOffersDAO;
 import com.dto.LoanOffersDTO;
+import com.utils.Constants;
 
 public class PostLoanOffersDAOImpl extends MySQLConnection implements
 		PostLoanOffersDAO {
@@ -18,7 +19,7 @@ public class PostLoanOffersDAOImpl extends MySQLConnection implements
 		try {
 			conn = getConnection();
 			preparedStatement = conn
-					.prepareStatement("INSERT INTO  loan_offers (banker_id, university_id, post_name, interest_rate, max_amount, post_features,mandatory_docs) VALUES (?,?,?,?,?,?,?)");
+					.prepareStatement(Constants.INSERT_LOAN_OFFERS);
 
 			preparedStatement.setInt(1, loanOfferDTO.getBankerId());
 			preparedStatement.setInt(2, loanOfferDTO.getUniversityId());
