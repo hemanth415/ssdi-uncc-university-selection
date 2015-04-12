@@ -23,7 +23,7 @@
 							SEARCH UNIVERSITIES </b></a></th>
 				<th><a href="/Sprint-1/studentProfiles.jsp"> <b>
 							STUDENT PROFILES </b></a></th>
-				<th><a href=""> <b> POSTS </b></a></th>
+				<th><a href="/Sprint-1/postLoanOffers.jsp"> <b> POSTS </b></a></th>
 			</tr>
 		</table>
 		<br>

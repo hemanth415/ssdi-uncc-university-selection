@@ -55,6 +55,7 @@ public class LoginDaoImpl extends MySQLConnection implements LoginDao{
 			preparedStatement.setString(1, userDTO.getUserName());
 			resultSet = preparedStatement.executeQuery();
 			if(resultSet != null && resultSet.next()){
+				userDTO.setBankerId(resultSet.getInt("banker_id"));
 				userDTO.setFirstName(resultSet.getString("first_name"));
 				userDTO.setLastName(resultSet.getString("last_name"));
 				userDTO.setBankName(resultSet.getString("bank_name"));
@@ -94,6 +95,7 @@ public class LoginDaoImpl extends MySQLConnection implements LoginDao{
 			preparedStatement.setString(1, userDTO.getUserName());
 			resultSet = preparedStatement.executeQuery();
 			if(resultSet != null && resultSet.next()){
+				userDTO.setStudentId(resultSet.getInt("student_id"));
 				userDTO.setFirstName(resultSet.getString("first_name"));
 				userDTO.setLastName(resultSet.getString("last_name"));
 				userDTO.setEmailId(resultSet.getString("email_id"));

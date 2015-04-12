@@ -6,6 +6,7 @@ public class UserDTO{
 	private String userPassword;
 	private char userRole;
 	private int bankerId;
+	private int studentId;
 	private String firstName;
 	private String lastName;
 	private String bankName;
@@ -64,6 +65,18 @@ public class UserDTO{
 	 */
 	public void setBankerId(int bankerId) {
 		this.bankerId = bankerId;
+	}
+	/**
+	 * @return the studentId
+	 */
+	public int getStudentId() {
+		return studentId;
+	}
+	/**
+	 * @param studentId the studentId to set
+	 */
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
 	}
 	/**
 	 * @return the firstName
