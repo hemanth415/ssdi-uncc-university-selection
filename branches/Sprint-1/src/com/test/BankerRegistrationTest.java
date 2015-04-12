@@ -10,6 +10,10 @@ import com.dao.BankerRegistrationDAO;
 import com.daoImpl.BankerRegistrationDAOImpl;
 import com.dto.BankerDTO;
 
+/**
+ * @author Hemchand
+ *
+ */
 public class BankerRegistrationTest {
 	BankerDTO dto = null;
 	BankerRegistrationDAO bankerRegistrationDAO;
