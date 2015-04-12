@@ -94,5 +94,4 @@ public class SearchUniversityDAOImpl  extends MySQLConnection implements SearchU
 		}
 		return universityDTOs;
 	}
-
 }

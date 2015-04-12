@@ -71,5 +71,4 @@ public class StudentProfileDAOImpl extends MySQLConnection implements
 		}
 		return studentDTOs;
 	}
-
 }
