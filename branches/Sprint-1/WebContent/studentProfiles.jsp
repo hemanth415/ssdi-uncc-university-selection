@@ -14,7 +14,7 @@ tr.odd {
 	background: #41AAC4;
 }
 </style>
-<title>Insert title here</title>
+<title>Student Profile</title>
 </head>
 <body background="images/snowflakes_on_light_purple.gif">
 	<form action="StudentProfileController" method="post">
@@ -49,21 +49,15 @@ tr.odd {
 											SEARCH UNIVERSITIES </b></a></th>
 								<th><a href="/Sprint-1/studentProfiles.jsp"> <b>
 											STUDENT PROFILES </b></a></th>
-								<th><a href=""> <b> POSTS </b></a></th>
+								<th><a href="/Sprint-1/postLoanOffers.jsp"> <b> POSTS </b></a></th>
 							</tr>
 						</table>
 					</c:otherwise>
 				</c:choose>
-				<br>
 			</div>
 			<div>
+			<h3 align="center">Select the term(s) to view Student Profile(s):</h3>
 				<table>
-					<tr>
-						<th colspan="4"><b>Select the term(s) to view Student
-								Profile(s):</b></th>
-					</tr>
-					<tr>
-					</tr>
 					<tr>
 						<td><input type="checkbox" value="Spring-2015"
 							name="spring2015" id="spring2015" /></td>
