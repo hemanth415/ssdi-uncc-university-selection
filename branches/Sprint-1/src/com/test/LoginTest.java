@@ -3,7 +3,10 @@
  */
 package com.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +20,7 @@ import com.dto.UserDTO;
  *
  */
 public class LoginTest {
-	
+
 	private LoginDao loginDao;
 	private UserDTO userDTO;
 
@@ -33,30 +36,62 @@ public class LoginTest {
 	 */
 	@Test
 	public void validateStudentLoginSuccess() {
-		userDTO.setUserName("siva123@gmail.com");
-		userDTO.setUserPassword("123");
-		assertEquals("Successful Student Login.", 'S',loginDao.validateLogin(userDTO));
+		try {
+			userDTO.setUserName("siva123@gmail.com");
+			userDTO.setUserPassword("123");
+			assertEquals("Successful Student Login.", 'B',
+					loginDao.validateLogin(userDTO));
+		} catch (Exception e) {
+			fail("Unexpected error. " + e.getMessage());
+		}
 	}
-	
-	
+
 	/**
 	 * Test method for
 	 * {@link com.daoImpl.LoginDaoImpl#validateLogin(com.dto.UserDTO)}.
 	 */
 	@Test
 	public void validateBankerLoginSuccess() {
-		userDTO.setUserName("kvineet@gmail.com");
-		userDTO.setUserPassword("kvineet@gmail.com");
-		assertEquals("Successful Banker Login.", 'B',loginDao.validateLogin(userDTO));
+		try {
+			userDTO.setUserName("kvineet@gmail.com");
+			userDTO.setUserPassword("kvineet@gmail.com");
+			assertEquals("Successful Banker Login.", 'S',
+					loginDao.validateLogin(userDTO));
+		} catch (Exception e) {
+			fail("Unexpected error. " + e.getMessage());
+		}
 	}
 
 	/**
 	 * Test method for
-	 * {@link com.daoImpl.LoginDaoImpl#fetchBankerDetails(com.dto.UserDTO)}.
+	 * {@link com.daoImpl.LoginDaoImpl#validateLogin(com.dto.UserDTO)}.
 	 */
 	@Test
-	public void testFetchBankerDetails() {
-		fail("Not yet implemented"); // TODO
+	public void validatePwdLoginFailure() {
+		try {
+			userDTO.setUserName("kvineet@gmail.com");
+			userDTO.setUserPassword("123");
+			assertNotEquals("Login Failure.", 'S',
+					loginDao.validateLogin(userDTO));
+		} catch (Exception e) {
+			fail("Unexpected error. " + e.getMessage());
+		}
+	}
+
+	/**
+	 * Test method for
+	 * {@link com.daoImpl.LoginDaoImpl#validateLogin(com.dto.UserDTO)}.
+	 */
+	@Test
+	public void validateUserNameLoginFailure() {
+		try {
+			userDTO.setUserName("siva1234@gmail.com");
+			userDTO.setUserPassword("123");
+			assertNotEquals("Login Failure.", 'S',
+					loginDao.validateLogin(userDTO));
+		} catch (Exception e) {
+			fail("Unexpected error. " + e.getMessage());
+		}
 	}
 
 	/**
@@ -65,7 +100,32 @@ public class LoginTest {
 	 */
 	@Test
 	public void testFetchStudentDetails() {
-		fail("Not yet implemented"); // TODO
+		try {
+			userDTO.setUserName("kvineet@gmail.com");
+			userDTO.setUserPassword("kvineet@gmail.com");
+			loginDao.fetchStudentDetails(userDTO);
+			assertTrue("Successful in fetching Student details.", userDTO
+					.getFirstName().equals("Vineet"));
+		} catch (Exception e) {
+			fail("Unexpected error. " + e.getMessage());
+		}
+	}
+
+	/**
+	 * Test method for
+	 * {@link com.daoImpl.LoginDaoImpl#fetchBankerDetails(com.dto.UserDTO)}.
+	 */
+	@Test
+	public void testFetchBankerDetails() {
+		try {
+			userDTO.setUserName("siva123@gmail.com");
+			userDTO.setUserPassword("123");
+			loginDao.fetchBankerDetails(userDTO);
+			assertTrue("Successful in fetching Banker details.", userDTO
+					.getFirstName().equals("Siva"));
+		} catch (Exception e) {
+			fail("Unexpected error. " + e.getMessage());
+		}
 	}
 
 }
