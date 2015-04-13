@@ -100,6 +100,4 @@ public class BankerRegistrationTest {
 				bankerRegistrationDAO.bankerRegistration(dto));
 		
 	}
-	
-	
 }

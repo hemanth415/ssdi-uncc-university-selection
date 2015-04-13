@@ -8,56 +8,34 @@
 <title>Post Loan Offers</title>
 <script>
 	function validateForm() {
-		/* 				var bankName = document.getElementById("bankNameID");
-		 var contactPerson = document.getElementById("contactPersonID");
-		 var contactNum = document.getElementById("contactNumID");
-		 var contactEmail = document.getElementById("contactEmailID");
-		 var bankAddress = document.getElementById("bankAddressID");
-		 var bankZipCode = document.getElementById("bankZipCodeID");
-		 var country = document.getElementById("countryID");
-		 var universityName = document.getElementById("universityNameID");
-		 var interestRate = document.getElementById("interestRateID");
-		 var maxLoanAmount = document.getElementById("maxLoanAmountID");
-		 var loanDescription = document.getElementById("loanDescriptionID");
-
-		 if (bankName.value.length <= 0) {
-		 alert("Please enter your Bank's name");
-		 return false;
-		 } else if (contactPerson.value.length <= 0) {
-		 alert("Please enter your Full name");
-		 return false;
-		 } else if ((isNaN(contactNum.value))
-		 || (contactNum.value.indexOf(" ") != -1) || (contactNum.value.length <= 9)) {
-		 alert("Please enter a valid phoneNumber");
-		 return false;
-		 } else if (contactEmail.value.length <= 0) {
-		 alert("Please enter a valid email");
-		 return false;
-		 } else if (bankAddress.value.length <= 0) {
-		 alert("Please enter the Bank's address");
-		 return false;
-		 } else if (isNaN(bankZipCode.value)
-		 || (bankZipCode.value.indexOf(" ") != -1)  (bankZipCode.value.length <= 5)) {
-		 alert("Please enter a valid Zip code");
-		 return false;
-		 } else if (country.value.length <= 0) {
-		 alert("Please enter country");
-		 return false;
-		 } else if (universityName.value.length <= 0) {
-		 alert("Please select university");
-		 return false;
-		 } else if (isNaN(interestRate.value)
-		 || (interestRate.value.indexOf(" ") != -1)  (interestRate.value.length <= 0)) {
-		 alert("Please enter the interest rate");
-		 return false;
-		 } else if (isNaN(maxLoanAmount.value)
-		 || (maxLoanAmount.value.indexOf(" ") != -1)) {
-		 alert("Please enter the maimum loan amount");
-		 return false;
-		 } else if (loanDescription.value.length <= 0) {
-		 alert("Enter some description!!");
-		 return false;
-		 } */
+		var postName = document.getElementById("postNameID");
+		var universityName = document.getElementById("universityNameID");
+		var loanFeatures = document.getElementById("loanFeaturesID");
+		var mandtoryDocs = document.getElementById("mandtoryDocsID");
+		var interestRate = document.getElementById("interestRateID");
+		var maxLoanAmount = document.getElementById("maxLoanAmountID");
+		
+		if (postName.value.length <= 0) {
+			 alert("Please enter a name for your post");
+			 return false;
+		} else if (universityName.value.length <= 0) {
+			 alert("Please select an University");
+			 return false;
+		} else if (loanFeatures.value.length <= 0) {
+			 alert("Please enter loan features / description");
+			 return false;
+		} else if (mandtoryDocs.value.length <= 0) {
+			 alert("Please enter the mandotory documents to be submitted");
+			 return false;
+		} else if ((isNaN(interestRate.value)) || (interestRate.value.indexOf(" ") != -1) || 
+								(interestRate.value.length <= 0)) {
+				alert("Incorrect format. Please enter a valid interest rate");
+			 return false;
+		} else if (isNaN(maxLoanAmount.value) || (maxLoanAmount.value.indexOf(" ") != -1) ||
+											(maxLoanAmount.value.length <= 0)) {
+			 alert("Please enter the maximum loan amount");
+			 return false;
+		}
 	}
 </script>
 </head>
