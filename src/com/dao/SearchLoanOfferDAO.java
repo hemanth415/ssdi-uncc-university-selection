@@ -2,11 +2,12 @@ package com.dao;
 
 import java.util.List;
 
-import com.dto.LofferDTO;
+import com.dto.LoanOfferDTO;
+
 
 public interface SearchLoanOfferDAO
 {
 
-	public List<LofferDTO> fetchLoanOffersByUnivLcoun(LofferDTO lofferDTO);
+	public List<LoanOfferDTO> fetchLoanOffersByUnivLcoun(LoanOfferDTO loanOfferDTO);
 
 }

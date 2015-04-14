@@ -1,43 +1,39 @@
 package com.dto;
 
-public class LofferDTO {
-	
-	private String universityName;
-	private String lCountry;
+public class LoanOfferDTO {
+	private int universityID;
+	private String loanCountry;
 	private String bankName;
-	private String lOfficer;
+	private String loanOfficerName;
 	private long bankerContactNum;
 	private String bankerEmailId;
 	private float interestRate;
 	private long maxLoanAmount;
-	private String loanDescription; //bank_location_id
+	private String loanDescription;
 	
-	public String getUniversityName() {
-		return universityName;
+	public int getUniversityID() {
+		return universityID;
 	}
-	public void setUniversityName(String universityName) {
-		this.universityName = universityName;
+	public void setUniversityID(int universityID) {
+		this.universityID = universityID;
 	}
-
-	public String getLCountry() {
-		return lCountry;
+	public String getLoanCountry() {
+		return loanCountry;
 	}
-	public void setLCountry(String lCountry) {
-		this.lCountry = lCountry;
+	public void setLoanCountry(String loanCountry) {
+		this.loanCountry = loanCountry;
 	}
-	
 	public String getBankName() {
 		return bankName;
 	}
 	public void setBankName(String bankName) {
 		this.bankName = bankName;
 	}
-
-	public String getLOfficer() {
-		return lOfficer;
+	public String getLoanOfficerName() {
+		return loanOfficerName;
 	}
-	public void setLOfficer(String lOfficer) {
-		this.lOfficer = lOfficer;
+	public void setLoanOfficerName(String loanOfficerName) {
+		this.loanOfficerName = loanOfficerName;
 	}
 	public long getBankerContactNum() {
 		return bankerContactNum;
@@ -69,8 +65,4 @@ public class LofferDTO {
 	public void setLoanDescription(String loanDescription) {
 		this.loanDescription = loanDescription;
 	}
-	
-
-
-
 }

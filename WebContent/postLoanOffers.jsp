@@ -96,10 +96,9 @@
 				<tr>
 					<td>University name:</td>
 					<td><select name="universityName" id="universityNameID">
-							<option value="50000">The University of North Carolina
-								at Chapel Hill</option>
-							<option value="50001">The University of North Carolina
-								at Charlotte</option>
+							<option value="1">All Universities</option>
+							<option value="50000">The University of North Carolina at Chapel Hill</option>
+							<option value="50001">The University of North Carolina at Charlotte</option>
 							<option value="50002">North Carolina State University</option>
 					</select></td>
 				</tr>
