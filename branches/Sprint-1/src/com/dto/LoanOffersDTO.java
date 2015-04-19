@@ -1,36 +1,176 @@
 package com.dto;
 
-public class LoanOffersDTO {
-	private int universityId;
-	private int bankerId;
+import java.io.Serializable;
+
+/**
+ * @author Hemchand
+ * @author Hemanth : After Harini Review
+ *
+ */
+
+public class LoanOffersDTO implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3115060517602060816L;
+	private int universityID;
+	private String loanCountry;
+	private String bankName;
+	private String loanOfficerName;
+	private long bankerContactNum;
+	private String bankerEmailId;
+	private float interestRate;
+	private long loanAmount;
+	private String loanDescription;
+	private double installments;
+	private int duration;
+	private boolean prePayment;
 	private String offerName;
-	private String features;
-	private String mandatoryDocs;
-	private int interestRate;
-	private long maxLoanAmount;
+	private String prePaymentValue;
+	
 	/**
-	 * @return the universityId
+	 * @return the universityID
 	 */
-	public int getUniversityId() {
-		return universityId;
+	public int getUniversityID() {
+		return universityID;
 	}
 	/**
-	 * @param universityId the universityId to set
+	 * @param universityID the universityID to set
 	 */
-	public void setUniversityId(int universityId) {
-		this.universityId = universityId;
+	public void setUniversityID(int universityID) {
+		this.universityID = universityID;
 	}
 	/**
-	 * @return the bankerId
+	 * @return the loanCountry
 	 */
-	public int getBankerId() {
-		return bankerId;
+	public String getLoanCountry() {
+		return loanCountry;
 	}
 	/**
-	 * @param bankerId the bankerId to set
+	 * @param loanCountry the loanCountry to set
 	 */
-	public void setBankerId(int bankerId) {
-		this.bankerId = bankerId;
+	public void setLoanCountry(String loanCountry) {
+		this.loanCountry = loanCountry;
+	}
+	/**
+	 * @return the bankName
+	 */
+	public String getBankName() {
+		return bankName;
+	}
+	/**
+	 * @param bankName the bankName to set
+	 */
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+	/**
+	 * @return the loanOfficerName
+	 */
+	public String getLoanOfficerName() {
+		return loanOfficerName;
+	}
+	/**
+	 * @param loanOfficerName the loanOfficerName to set
+	 */
+	public void setLoanOfficerName(String loanOfficerName) {
+		this.loanOfficerName = loanOfficerName;
+	}
+	/**
+	 * @return the bankerContactNum
+	 */
+	public long getBankerContactNum() {
+		return bankerContactNum;
+	}
+	/**
+	 * @param bankerContactNum the bankerContactNum to set
+	 */
+	public void setBankerContactNum(long bankerContactNum) {
+		this.bankerContactNum = bankerContactNum;
+	}
+	/**
+	 * @return the bankerEmailId
+	 */
+	public String getBankerEmailId() {
+		return bankerEmailId;
+	}
+	/**
+	 * @param bankerEmailId the bankerEmailId to set
+	 */
+	public void setBankerEmailId(String bankerEmailId) {
+		this.bankerEmailId = bankerEmailId;
+	}
+	/**
+	 * @return the interestRate
+	 */
+	public float getInterestRate() {
+		return interestRate;
+	}
+	/**
+	 * @param interestRate the interestRate to set
+	 */
+	public void setInterestRate(float interestRate) {
+		this.interestRate = interestRate;
+	}
+	/**
+	 * @return the loanAmount
+	 */
+	public long getLoanAmount() {
+		return loanAmount;
+	}
+	/**
+	 * @param loanAmount the loanAmount to set
+	 */
+	public void setLoanAmount(long loanAmount) {
+		this.loanAmount = loanAmount;
+	}
+	/**
+	 * @return the loanDescription
+	 */
+	public String getLoanDescription() {
+		return loanDescription;
+	}
+	/**
+	 * @param loanDescription the loanDescription to set
+	 */
+	public void setLoanDescription(String loanDescription) {
+		this.loanDescription = loanDescription;
+	}
+	/**
+	 * @return the installments
+	 */
+	public double getInstallments() {
+		return installments;
+	}
+	/**
+	 * @param installments the installments to set
+	 */
+	public void setInstallments(double installments) {
+		this.installments = installments;
+	}
+	/**
+	 * @return the duration
+	 */
+	public int getDuration() {
+		return duration;
+	}
+	/**
+	 * @param duraition the duration to set
+	 */
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+	/**
+	 * @return the prePayment
+	 */
+	public boolean isPrePayment() {
+		return prePayment;
+	}
+	/**
+	 * @param prePayment the prePayment to set
+	 */
+	public void setPrePayment(boolean prePayment) {
+		this.prePayment = prePayment;
 	}
 	/**
 	 * @return the offerName
@@ -45,52 +185,18 @@ public class LoanOffersDTO {
 		this.offerName = offerName;
 	}
 	/**
-	 * @return the features
+	 * @return the prePaymentValue
 	 */
-	public String getFeatures() {
-		return features;
+	public String getPrePaymentValue() {
+		return prePaymentValue;
 	}
 	/**
-	 * @param features the features to set
+	 * @param prePaymentValue the prePaymentValue to set
 	 */
-	public void setFeatures(String features) {
-		this.features = features;
-	}
-	/**
-	 * @return the mandatoryDocs
-	 */
-	public String getMandatoryDocs() {
-		return mandatoryDocs;
-	}
-	/**
-	 * @param mandatoryDocs the mandatoryDocs to set
-	 */
-	public void setMandatoryDocs(String mandatoryDocs) {
-		this.mandatoryDocs = mandatoryDocs;
-	}
-	/**
-	 * @return the interestRate
-	 */
-	public int getInterestRate() {
-		return interestRate;
-	}
-	/**
-	 * @param interestRate the interestRate to set
-	 */
-	public void setInterestRate(int interestRate) {
-		this.interestRate = interestRate;
-	}
-	/**
-	 * @return the maxLoanAmount
-	 */
-	public long getMaxLoanAmount() {
-		return maxLoanAmount;
-	}
-	/**
-	 * @param maxLoanAmount the maxLoanAmount to set
-	 */
-	public void setMaxLoanAmount(long maxLoanAmount) {
-		this.maxLoanAmount = maxLoanAmount;
+	public void setPrePaymentValue(String prePaymentValue) {
+		this.prePaymentValue = prePaymentValue;
 	}
 	
+
+
 }

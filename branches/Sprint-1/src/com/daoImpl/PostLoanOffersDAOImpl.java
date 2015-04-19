@@ -5,14 +5,20 @@ import java.sql.PreparedStatement;
 
 import com.connection.MySQLConnection;
 import com.dao.PostLoanOffersDAO;
-import com.dto.LoanOffersDTO;
+import com.dto.PostLoanOffersDTO;
 import com.utils.Constants;
+
+/**
+ * @author Hemchand
+ * @author Hemanth : After Harini Review
+ *
+ */
 
 public class PostLoanOffersDAOImpl extends MySQLConnection implements
 		PostLoanOffersDAO {
 
 	@Override
-	public boolean postOffer(LoanOffersDTO loanOfferDTO) throws Exception {
+	public boolean postOffer(PostLoanOffersDTO postLoanOffersDTO) throws Exception {
 		Connection conn = null;
 		PreparedStatement preparedStatement = null;
 		int check = 0;
@@ -21,14 +27,18 @@ public class PostLoanOffersDAOImpl extends MySQLConnection implements
 			preparedStatement = conn
 					.prepareStatement(Constants.INSERT_LOAN_OFFERS);
 
-			preparedStatement.setInt(1, loanOfferDTO.getBankerId());
-			preparedStatement.setInt(2, loanOfferDTO.getUniversityId());
-			preparedStatement.setString(3,loanOfferDTO.getOfferName());
-			preparedStatement.setInt(4, loanOfferDTO.getInterestRate());
-			preparedStatement.setLong(5, loanOfferDTO.getMaxLoanAmount());
-			preparedStatement.setString(6, loanOfferDTO.getFeatures());
-			preparedStatement.setString(7, loanOfferDTO.getMandatoryDocs());
-
+			preparedStatement.setInt(1, postLoanOffersDTO.getBankerId());
+			preparedStatement.setInt(2, postLoanOffersDTO.getUniversityId());
+			preparedStatement.setString(3,postLoanOffersDTO.getOfferName());
+			preparedStatement.setFloat(4, postLoanOffersDTO.getInterestRate());
+			preparedStatement.setLong(5,postLoanOffersDTO.getMinLoanAmount());
+			preparedStatement.setLong(6, postLoanOffersDTO.getMaxLoanAmount());
+			preparedStatement.setInt(7, postLoanOffersDTO.getMaxDuration());
+			preparedStatement.setString(8, postLoanOffersDTO.getFeatures());
+			preparedStatement.setString(9, postLoanOffersDTO.getMandatoryDocs());
+			preparedStatement.setBoolean(10, postLoanOffersDTO.isPrePayments());
+			preparedStatement.setInt(11, postLoanOffersDTO.getProcessingFee());
+			
 			check = preparedStatement.executeUpdate();
 			
 			if(check == 0){

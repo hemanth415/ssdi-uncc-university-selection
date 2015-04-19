@@ -8,15 +8,15 @@ import org.junit.Test;
 
 import com.dao.PostLoanOffersDAO;
 import com.daoImpl.PostLoanOffersDAOImpl;
-import com.dto.LoanOffersDTO;
+import com.dto.PostLoanOffersDTO;
 
 public class PostLoanOffersTest {
-	LoanOffersDTO dto = null;
+	PostLoanOffersDTO dto = null;
 	PostLoanOffersDAO postLoanOffersDAO;
 
 	@Before
 	public void setUp() throws Exception {
-		dto = new LoanOffersDTO();
+		dto = new PostLoanOffersDTO();
 		postLoanOffersDAO = new PostLoanOffersDAOImpl();
 	}
 

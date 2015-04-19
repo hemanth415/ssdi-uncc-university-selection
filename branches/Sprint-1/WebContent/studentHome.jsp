@@ -21,7 +21,7 @@
 				<th><a href="/Sprint-1/studentHome.jsp"> <b> HOME </b></a></th>
 				<th><a href="/Sprint-1/universitySearch.jsp"> <b>
 							SEARCH UNIVERSITIES </b></a></th>
-				<th><a href=""> <b> SEARCH BANKS </b></a></th>
+				<th><a href="/Sprint-1/SearchLoanOffers.jsp"> <b> SEARCH BANKS </b></a></th>
 				<th><a href=""> <b> VIEW PROFILE </b></a></th>
 			</tr>
 		</table>

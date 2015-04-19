@@ -5,7 +5,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Hemanth
+ *
+ */
 public class Constants {
+	
 	public final static String SEARCH_UNIV_BY_COUNTRY_STATE = "select university_name,university_desc,address,contact_no,email_id from universities as a join location as b on a.location_id=b.location_id where UPPER(b.country)=? and UPPER(b.state) = ?";
 
 	public final static String SEARCH_UNIV_BY_NAME = "select university_name,university_desc,address,contact_no,email_id from universities where UPPER(university_name) = ?";
@@ -46,5 +51,9 @@ public class Constants {
 	
 	public final static String FETCH_BANKER_DETAILS = "select * from bankers where email_id=?";
 	
-	public final static String INSERT_LOAN_OFFERS = "INSERT INTO  loan_offers (banker_id, university_id, post_name, interest_rate, max_amount, post_features,mandatory_docs) VALUES (?,?,?,?,?,?,?)";
+	public final static String INSERT_LOAN_OFFERS = "INSERT INTO loan_offers (banker_id,university_id,post_name,interest_rate,min_amount,max_amount,max_duration,post_features,mandatory_docs,prePayment,processing_percent) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+	
+	public final static String SEARCH_LOAN_OFFERS = "select a.banker_id,b.first_name,b.last_name,b.bank_name,b.bank_contact_no,b.bank_email_id,a.post_name,a.interest_rate,a.max_duration,a.post_features,a.mandatory_docs,a.prePayment from loan_offers a "
+													+"join bankers b on a.banker_id = b.banker_id where university_id = ? and max_amount>=? and (min_amount<=? or min_amount=0)"
+													+"and b.bank_location_id in (select location_id from location where country=?)";
 }

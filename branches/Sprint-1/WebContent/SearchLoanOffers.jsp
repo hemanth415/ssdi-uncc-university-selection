@@ -3,36 +3,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" type="text/css" href="SearchLoanOffers.css">
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<title>Search Loan Offers</title>
-	
-</head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!-- <link rel="stylesheet" type="text/css" href="SearchLoanOffers.css">  -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style type="text/css">
+tr.even {
+	background: #80CEB9;
+}
 
+tr.odd {
+	background: #41AAC4;
+}
+</style>
+<title>Search Loan Offers</title>
+</head>
 <body background="images/snowflakes_on_light_purple.gif">
 	<form action="SearchLoanOfferController" method="post">
 		<center>
 			<div>
-				<table class="noBorder">
-					<tr >
-						<td class="noBorder">University Name :</td>
-						<td class="noBorder">
-							<select name="universityID" id="universityID">
+				<table>
+					<tr>
+						<td>University Name</td>
+						<td><select name="universityID" id="universityID">
 								<option value="1">Loans common to all Universities</option>
-								<option value="50000">The University of North Carolina at Chapel Hill</option>
-								<option value="50001">The University of North Carolina at Charlotte</option>
+								<option value="50000">The University of North Carolina
+									at Chapel Hill</option>
+								<option value="50001">The University of North Carolina
+									at Charlotte</option>
 								<option value="50002">North Carolina State University</option>
-							</select>
-						</td>
-						
-						<td class="noBorder">Country:</td>
-						<td class="noBorder">
-							<select name="loanCountry" id="loanCountryID">
+						</select></td>
+						<td>Country</td>
+						<td><select name="loanCountry" id="loanCountryID">
 								<option value="US">United States Of America</option>
 								<option value="INDIA">INDIA</option>
-							</select>
-						</td>
+						</select></td>
+						<td>Loan Amount Required</td>
+						<td>
+						<td><input type="text" name="loanAmount"
+							value="${requestScope.loanAmount}"></td>
 					</tr>
 				</table>
 			</div>
@@ -51,33 +59,46 @@
 			</c:if>
 			<div>
 				<c:if test="${requestScope.result == true}">
+					<div align="left"></div>
 					<br>
-					<table >
-						<tr align="center" style="border: 1px solid black">
-							<th align="center" width="10%">Bank Name</th>
-							<th align="center" width="10%">Loan Officer</th>
-							<th align="center" width="10%">Telephone</th>
-							<th align="center" width="10%">Email</th>
-							<th align="center" width="10%">Interest rate</th>
-							<th align="center" width="10%">Loan amount</th>
-							<th align="center" width="25%">Loan details</th>
+					<table>
+						<tr align="left" bgcolor="2F343A">
+							<th align="left" width="10%">Bank Name</th>
+							<th align="left" width="12%">Offer Name</th>
+							<th align="left" width="10%">Loan Officer</th>
+							<th align="left" width="8%">Telephone</th>
+							<th align="left" width="10%">Email</th>
+							<th align="left" width="7%">Interest Rate</th>
+							<th align="left" width="4%">Period</th>
+							<th align="left" width="8%">Pre-Payment</th>
+							<th align="left" width="7%">Installment</th>
+							<th align="left" width="24%">Loan details</th>
 						</tr>
-						
-						<c:forEach var="element" items="${resultList}">
-        					<tr>
-					            <td>${element.bankName}</td> 
-					            <td>${element.loanOfficerName}</td>
-					            <td>${element.bankerContactNum}</td>
-					            <td>${element.bankerEmailId}</td>
-					            <td>${element.interestRate}</td>
-					            <td>${element.maxLoanAmount}</td>
-					            <td>${element.loanDescription}</td>
-					        </tr> 
-					    </c:forEach>
+						<c:forEach var="element" items="${resultList}" varStatus="loop">
+							<tr class="${loop.index % 2 == 0 ? 'even' : 'odd'}">
+								<td>${element.bankName}</td>
+								<td>${element.offerName}</td>
+								<td>${element.loanOfficerName}</td>
+								<td>${element.bankerContactNum}</td>
+								<td>${element.bankerEmailId}</td>
+								<td>${element.interestRate}</td>
+								<td>${element.duration}</td>
+								<td>${element.prePaymentValue}</td>
+								<td>${element.installments}</td>
+								<td>${element.loanDescription}</td>
+							</tr>
+						</c:forEach>
 					</table>
 				</c:if>
 			</div>
 		</center>
+	</form>
+	<form action="ExcelExportController" method="post">
+		<div align="center">
+			<c:if test="${sessionScope.loanOffersResult == true}">
+				<input type="submit" value="Excel Export"></input>
+			</c:if>
+		</div>
 	</form>
 </body>
 </html>

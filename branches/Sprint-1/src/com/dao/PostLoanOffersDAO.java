@@ -1,7 +1,7 @@
 package com.dao;
 
-import com.dto.LoanOffersDTO;
+import com.dto.PostLoanOffersDTO;
 
 public interface PostLoanOffersDAO {
-	public boolean postOffer(LoanOffersDTO loanOfferDTO) throws Exception;
+	public boolean postOffer(PostLoanOffersDTO postLoanOffersDTO) throws Exception;
 }
