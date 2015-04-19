@@ -3,6 +3,10 @@ package com.utils;
 
 import java.util.List;
 
+/**
+ * @author Hemanth
+ *
+ */
 public class ValidatorUtils {
 	
 	public static boolean validateCountry(String country){
@@ -20,6 +24,10 @@ public class ValidatorUtils {
 	}
 	
 	public static boolean validateString(String variable){
+		return (variable != null && !variable.isEmpty());
+	}
+	
+	public static boolean validateList(List variable){
 		return (variable != null && !variable.isEmpty());
 	}
 

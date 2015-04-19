@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.dao.SearchLoanOfferDAO;
 import com.daoImpl.SearchLoanOfferDAOImpl;
-import com.dto.LoanOfferDTO;
+import com.dto.LoanOffersDTO;
 import com.utils.ValidatorUtils;
 
 /**
@@ -49,19 +49,23 @@ public class SearchLoanOfferController extends HttpServlet {
 		HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		RequestDispatcher rd = null;
-		List<LoanOfferDTO> resultList = null;
+		List<LoanOffersDTO> resultList = null;
+		LoanOffersDTO loanOffersDTO = null;
 		boolean result = false;
 		if (session != null) {
-			/*System.out.println("Loan Offering Country:     "+ request.getParameter("loanCountry"));
-			System.out.println("University ID:     " + request.getParameter("universityID"));*/
-			
-			LoanOfferDTO loanOfferDTO = new LoanOfferDTO();
+			loanOffersDTO = new LoanOffersDTO();
 			searchLoanOfferDAO = new SearchLoanOfferDAOImpl();
 			
-			if (ValidatorUtils.validateString(request.getParameter("loanCountry").trim())) {
-				loanOfferDTO.setUniversityID(Integer.parseInt(request.getParameter("universityID")));
-				loanOfferDTO.setLoanCountry(request.getParameter("loanCountry").trim());
-				resultList = searchLoanOfferDAO.fetchLoanOffersByUnivLcoun(loanOfferDTO);
+			if (ValidatorUtils.validateString(request.getParameter("loanAmount"))) {
+				loanOffersDTO.setUniversityID(Integer.parseInt(request.getParameter("universityID")));
+				loanOffersDTO.setLoanCountry(request.getParameter("loanCountry"));
+				loanOffersDTO.setLoanAmount(Long.parseLong(request.getParameter("loanAmount")));
+				try {
+					resultList = searchLoanOfferDAO.fetchLoanOffers(loanOffersDTO);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				if(resultList != null && resultList.size()>0){
 					printResults(resultList); //Prints the Loan offers that are retrieved from the DataBase.
 					result = true;
@@ -70,10 +74,12 @@ public class SearchLoanOfferController extends HttpServlet {
 				}
 				request.setAttribute("result", result);
 				request.setAttribute("resultList", resultList);
+				session.setAttribute("loanOffers", resultList);
+				session.setAttribute("loanOffersResult", result);
 				rd = getServletContext().getRequestDispatcher("/SearchLoanOffers.jsp");
 				rd.forward(request, response);
 			} else {
-				request.setAttribute("message", "Provide valid university or country where loan needs to be availed ");
+				request.setAttribute("message", "Provide valid Loan Amount.");
 				rd = getServletContext().getRequestDispatcher("/SearchLoanOffers.jsp");
 				rd.forward(request, response);
 			}
@@ -85,14 +91,14 @@ public class SearchLoanOfferController extends HttpServlet {
 		}
 	}
 	
-	private void printResults(List<LoanOfferDTO> resultList){
-		for(LoanOfferDTO post: resultList){
+	private void printResults(List<LoanOffersDTO> resultList){
+		for(LoanOffersDTO post: resultList){
 			System.out.println(post.getBankName());
 			System.out.println(post.getLoanOfficerName());
 			System.out.println(post.getBankerContactNum());
 			System.out.println(post.getBankerEmailId());
 			System.out.println(post.getInterestRate());
-			System.out.println(post.getMaxLoanAmount());
+			System.out.println(post.getLoanAmount());
 			System.out.println(post.getLoanDescription());
 		}
 	}

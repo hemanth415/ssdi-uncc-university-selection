@@ -8,34 +8,36 @@ import java.util.List;
 
 import com.connection.MySQLConnection;
 import com.dao.SearchLoanOfferDAO;
-import com.dto.LoanOfferDTO;
+import com.dto.LoanOffersDTO;
+import com.utils.Constants;
+import com.utils.EMICalculationUtil;
 
 /**
  * @author Hemchand
+ * @author Hemanth : After Harini Review
  *
  */
 
 public class SearchLoanOfferDAOImpl extends MySQLConnection implements SearchLoanOfferDAO{
 
 	@Override
-	public List<LoanOfferDTO> fetchLoanOffersByUnivLcoun(LoanOfferDTO loanOfferDTO) {
+	public List<LoanOffersDTO> fetchLoanOffers(LoanOffersDTO loanOffersDTO) throws Exception {
 		Connection conn = null;
-		PreparedStatement fetchFromLoanOffersStatement = null;
-		PreparedStatement fetchFromBankersStatement = null;
-		ResultSet  loanOffersSet = null;
-		ResultSet  bankerSet = null;
-		List<LoanOfferDTO> searchResultsList = new ArrayList<LoanOfferDTO>();
+		PreparedStatement preparedStatement = null;
+		ResultSet  resultSet = null;
+		List<LoanOffersDTO> searchResultsList = new ArrayList<LoanOffersDTO>();
+		LoanOffersDTO loanOffersResultDTO;
 		
 		try{
 			conn = getConnection();
 			//Condition check for loan offers related to all Universities/ a specific University using University ID
-			if(loanOfferDTO.getUniversityID() == 1){
+	/*		if(loanOfferDTO.getUniversityID() == 1){
 				fetchFromLoanOffersStatement = conn.prepareStatement(""
-						+ "select banker_id, interest_rate, max_amount, post_features, mandloan_offersatory_docs  "
-						+ "from loan_offers");
+						+ "select banker_id, interest_rate, max_amount, post_features, mandatory_docs  "
+						+ "from loan_offers where university_id= 1");
 			}else{
 				fetchFromLoanOffersStatement = conn.prepareStatement(""
-						+ "select banker_id, interest_rate, max_amount, post_features, mandloan_offersatory_docs "
+						+ "select banker_id, interest_rate, max_amount, post_features, mandatory_docs "
 						+ "from loan_offers "
 						+ "where university_id="+loanOfferDTO.getUniversityID());
 			}
@@ -64,26 +66,40 @@ public class SearchLoanOfferDAOImpl extends MySQLConnection implements SearchLoa
 					loanOfferResultDTO.setInterestRate(loanOffersSet.getFloat("interest_rate"));
 					loanOfferResultDTO.setMaxLoanAmount(loanOffersSet.getLong("max_amount"));
 					loanOfferResultDTO.setLoanDescription(loanOffersSet.getString("post_features")+
-							" Required Documents are "+ loanOffersSet.getString("mandloan_offersatory_docs"));
+							" Required Documents are "+ loanOffersSet.getString("mandatory_docs"));
 					
 					searchResultsList.add(loanOfferResultDTO);
 					
-					/*System.out.println(bankerSet.getString("bank_name"));
-					System.out.println(bankerSet.getString("first_name") +" "+bankerSet.getString("last_name"));
-					System.out.println(bankerSet.getLong("bank_contact_no")+"");
-					System.out.println(bankerSet.getString("bank_email_id"));
-					System.out.println(loanOffersSet.getFloat("interest_rate")+"");
-					System.out.println(loanOffersSet.getLong("max_amount")+"");
-					System.out.println(loanOffersSet.getString("post_features")+
-							" Required Documents are "+ loanOffersSet.getString("mandloan_offersatory_docs"));*/
-					
 				}
+			}*/
+			preparedStatement = conn.prepareStatement(Constants.SEARCH_LOAN_OFFERS);
+			System.out.println(Constants.SEARCH_LOAN_OFFERS);
+			preparedStatement.setInt(1, loanOffersDTO.getUniversityID());
+			preparedStatement.setLong(2, loanOffersDTO.getLoanAmount());
+			preparedStatement.setLong(3, loanOffersDTO.getLoanAmount());
+			preparedStatement.setString(4, loanOffersDTO.getLoanCountry());
+			
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				loanOffersResultDTO = new LoanOffersDTO();
+				loanOffersResultDTO.setBankName(resultSet.getString("bank_name"));
+				loanOffersResultDTO.setLoanOfficerName(resultSet.getString("first_name") +", "+resultSet.getString("last_name"));
+				loanOffersResultDTO.setBankerContactNum(resultSet.getLong("bank_contact_no"));
+				loanOffersResultDTO.setBankerEmailId(resultSet.getString("bank_email_id"));
+				loanOffersResultDTO.setInterestRate(resultSet.getFloat("interest_rate"));
+				loanOffersResultDTO.setOfferName(resultSet.getString("post_name"));
+				loanOffersResultDTO.setDuration(resultSet.getInt("max_duration"));
+				loanOffersResultDTO.setLoanDescription(resultSet.getString("post_features")+"\n"+
+						" Required Documents are "+ resultSet.getString("mandatory_docs"));
+				loanOffersResultDTO.setLoanAmount(loanOffersDTO.getLoanAmount());
+				EMICalculationUtil.calculateInstallment(loanOffersResultDTO);
+				loanOffersResultDTO.setPrePaymentValue(resultSet.getInt("prePayment") == 0? "No":"Yes");
+				searchResultsList.add(loanOffersResultDTO);
 			}
-			return searchResultsList;
-		} catch(Exception E){
-			System.out.println(E+"");
+		} catch(Exception e){
+			throw e;
 		}
-		return null;
+		return searchResultsList;
 	}
 
 }

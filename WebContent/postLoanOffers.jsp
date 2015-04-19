@@ -88,14 +88,14 @@
 			</div>
 			<table align="center">
 				<tr>
-					<td>Post Name :</td>
-					<td><input type="text" name="postName" id="postNameID"
+					<td>Post Name</td>
+					<td colspan=3><input type="text" name="postName" id="postNameID"
 						value="${requestScope.bankName}"></td>
 				</tr>
 
 				<tr>
-					<td>University name:</td>
-					<td><select name="universityName" id="universityNameID">
+					<td>University name</td>
+					<td colspan=3><select name="universityName" id="universityNameID">
 							<option value="1">All Universities</option>
 							<option value="50000">The University of North Carolina at Chapel Hill</option>
 							<option value="50001">The University of North Carolina at Charlotte</option>
@@ -104,29 +104,55 @@
 				</tr>
 
 				<tr>
-					<td>Loan Features :</td>
-					<td><textarea rows="4" cols="50" name="loanFeatures"
+					<td>Loan Features</td>
+					<td colspan=3><textarea rows="4" cols="50" name="loanFeatures"
 							id="loanFeaturesID"></textarea></td>
 				</tr>
 
 				<tr>
-					<td>Mandatory Documents :</td>
-					<td><textarea rows="4" cols="50" name="mandtoryDocs"
+					<td>Mandatory Documents</td>
+					<td colspan=3><textarea rows="4" cols="50" name="mandtoryDocs"
 							id="mandtoryDocsID"></textarea></td>
 				</tr>
 
 				<tr>
-					<td>Interest rate(in numbers):</td>
+					<td>Interest rate(in numbers)</td>
 					<td><input type="text" name="interestRate" id="interestRateID"
 						value="${requestScope.interestRate}"></td>
 				</tr>
-
+				
 				<tr>
-					<td>Max loan amount(in numbers):</td>
-					<td><input type="text" name="maxLoanAmount"
-						id="maxLoanAmountID" value="${requestScope.maxLoanAmount}"></td>
+					<td>Duration(in months)</td>
+					<td><input type="text" name="maxDuration" id="maxDurationID" placeholder="Max"
+						value="${requestScope.maxDuration}"></td>
 				</tr>
 
+				<tr>
+					<td>Loan amount(in numbers)</td>
+					<td><input type="text" name="minLoanAmount" placeholder="Min"
+						id="minLoanAmountID" value="${requestScope.minLoanAmount}"></td>
+					<td>to</td>
+					<td><input type="text" name="maxLoanAmount" id="maxLoanAmountID" placeholder="Max"
+						value="${requestScope.maxLoanAmount}"></td>
+				</tr>
+
+				<tr>
+					<td>Processing Fee(% of loan amount)</td>
+					<td><input type="text" name="processingFee" id="processingFeeID"
+						value="${requestScope.processingFee}"></td>
+				</tr>
+				
+				<tr>
+					<td>Pre-payments</td>
+					<td>
+					<input type="radio" name="prePayments" id="prePaymentsID" value="true" checked>Yes
+					</td>
+					<td>
+					<input type="radio" name="prePayments" id="prePaymentsID" value="false">No
+					</td>
+				</tr>
+				
+				
 			</table>
 			<br> <br>
 			<table align="center">
