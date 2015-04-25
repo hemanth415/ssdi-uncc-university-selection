@@ -12,7 +12,7 @@
 		<h4 align="right">
 			Hello
 			<%=session.getAttribute("userName")%>
-			<br> <a href="LogOutlink"> <b> LOGOUT </b>
+			<br> <a href="Logout"> <b> LOGOUT </b>
 			</a>
 		</h4>
 		<br> <br>
@@ -22,7 +22,7 @@
 				<th><a href="/Sprint-1/universitySearch.jsp"> <b>
 							SEARCH UNIVERSITIES </b></a></th>
 				<th><a href="/Sprint-1/SearchLoanOffers.jsp?isHome=true"> <b> SEARCH BANKS </b></a></th>
-				<th><a href=""> <b> VIEW PROFILE </b></a></th>
+				<th><a href="/Sprint-1/Buffer.jsp"><b>WISH LIST</b></a></th>
 			</tr>
 		</table>
 		<br> <br>
