@@ -82,6 +82,7 @@ public class SearchLoanOfferDAOImpl extends MySQLConnection implements SearchLoa
 			resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()){
 				loanOffersResultDTO = new LoanOffersDTO();
+				loanOffersResultDTO.setPostId(resultSet.getInt("post_id"));
 				loanOffersResultDTO.setBankName(resultSet.getString("bank_name"));
 				loanOffersResultDTO.setLoanOfficerName(resultSet.getString("first_name") +", "+resultSet.getString("last_name"));
 				loanOffersResultDTO.setBankerContactNum(resultSet.getLong("bank_contact_no"));

@@ -17,6 +17,11 @@ tr.odd {
 </style>
 <title>Search Loan Offers</title>
 </head>
+<%
+	if("true".equalsIgnoreCase((String)request.getParameter("isHome"))){
+		session.setAttribute("offersFoundStatus",false);
+	}
+%>
 <body background="images/snowflakes_on_light_purple.gif">
 	<form action="SearchLoanOfferController" method="post">
 		<center>
@@ -58,13 +63,13 @@ tr.odd {
 				<c:out value="${requestScope.message}"></c:out>
 			</c:if>
 			<div>
-				<c:if test="${requestScope.result == true}">
+				<c:if test="${sessionScope.offersFoundStatus == true}">
 					<div align="left"></div>
 					<br>
 					<table>
 						<tr align="left" bgcolor="2F343A">
-							<th align="left" width="10%">Bank Name</th>
-							<th align="left" width="12%">Offer Name</th>
+							<th align="left" width="7%">Bank Name</th>
+							<th align="left" width="10%">Offer Name</th>
 							<th align="left" width="10%">Loan Officer</th>
 							<th align="left" width="8%">Telephone</th>
 							<th align="left" width="10%">Email</th>
@@ -73,8 +78,9 @@ tr.odd {
 							<th align="left" width="8%">Pre-Payment</th>
 							<th align="left" width="7%">Installment</th>
 							<th align="left" width="24%">Loan details</th>
+							<th align="center" width="5%">ADD to WishList</th>
 						</tr>
-						<c:forEach var="element" items="${resultList}" varStatus="loop">
+						<c:forEach var="element" items="${sessionScope.resultList}" varStatus="loop">
 							<tr class="${loop.index % 2 == 0 ? 'even' : 'odd'}">
 								<td>${element.bankName}</td>
 								<td>${element.offerName}</td>
@@ -86,6 +92,10 @@ tr.odd {
 								<td>${element.prePaymentValue}</td>
 								<td>${element.installments}</td>
 								<td>${element.loanDescription}</td>
+								<td align="center">
+        							<input type="submit" name="wishID" value="${element.postId}" 
+        								onclick="{form.action='WishListController';}" />
+        						</td>
 							</tr>
 						</c:forEach>
 					</table>

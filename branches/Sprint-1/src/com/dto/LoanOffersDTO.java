@@ -27,6 +27,7 @@ public class LoanOffersDTO implements Serializable{
 	private boolean prePayment;
 	private String offerName;
 	private String prePaymentValue;
+	private int postId;
 	
 	/**
 	 * @return the universityID
@@ -196,7 +197,16 @@ public class LoanOffersDTO implements Serializable{
 	public void setPrePaymentValue(String prePaymentValue) {
 		this.prePaymentValue = prePaymentValue;
 	}
-	
-
-
+	/**
+	 * @return the postId
+	 */
+	public int getPostId() {
+		return postId;
+	}
+	/**
+	 * @param postId the postId to set
+	 */
+	public void setPostId(int postId) {
+		this.postId = postId;
+	}
 }

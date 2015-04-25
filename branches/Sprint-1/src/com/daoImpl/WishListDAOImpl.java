@@ -25,15 +25,15 @@ public class WishListDAOImpl extends MySQLConnection implements WishListDAO{
 			conn = getConnection();
 			
 			findStatusStatement = conn.prepareStatement(Constants.GET_STATUS_WISH_LIST);
-			findStatusStatement.setInt(1, wishListDTO.getPost_id());
-			findStatusStatement.setInt(2, wishListDTO.getUser_id());
+			findStatusStatement.setInt(1, wishListDTO.getPostId());
+			findStatusStatement.setInt(2, wishListDTO.getUserId());
 			
 			resultSet = findStatusStatement.executeQuery();
 			
 			if(resultSet.next()){
 				deleteFromInsertStatement = conn.prepareStatement(Constants.DELETE_FROM_WISH_LIST);
-				deleteFromInsertStatement.setInt(1, wishListDTO.getPost_id());
-				deleteFromInsertStatement.setInt(2, wishListDTO.getUser_id());
+				deleteFromInsertStatement.setInt(1, wishListDTO.getPostId());
+				deleteFromInsertStatement.setInt(2, wishListDTO.getUserId());
 				
 				deleteStatus = deleteFromInsertStatement.executeUpdate();		
 				
@@ -47,8 +47,8 @@ public class WishListDAOImpl extends MySQLConnection implements WishListDAO{
 				}
 			} else{
 				wishListInsertStatement = conn.prepareStatement(Constants.INSERT_TO_WISH_LIST);
-				wishListInsertStatement.setInt(1, wishListDTO.getPost_id());
-				wishListInsertStatement.setInt(2, wishListDTO.getUser_id());
+				wishListInsertStatement.setInt(1, wishListDTO.getPostId());
+				wishListInsertStatement.setInt(2, wishListDTO.getUserId());
 				
 				insertStatus = wishListInsertStatement.executeUpdate();		
 				

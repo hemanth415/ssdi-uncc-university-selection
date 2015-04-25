@@ -54,11 +54,11 @@ public class WishListController extends HttpServlet {
 			
 			if(request.getParameter("wishID")!=null){
 				System.out.println("WishList controller invoked. Value =  " + Integer.parseInt(request.getParameter("wishID")));
-				System.out.println("User ID = "+session.getAttribute("userId"));
+				//System.out.println("User ID = "+session.getAttribute("userId"));
 			}
 			
-			wishListDTO.setPost_id(Integer.parseInt(request.getParameter("wishID")));
-			wishListDTO.setUser_id((int) session.getAttribute("userId"));
+			wishListDTO.setPostId(Integer.parseInt(request.getParameter("wishID")));
+			wishListDTO.setUserId((int) session.getAttribute("userId"));
 				
 			result = wishListDAO.saveToWishList(wishListDTO);
 				
@@ -67,7 +67,7 @@ public class WishListController extends HttpServlet {
 			}else{
 				request.setAttribute("message", "Item deleted from WishList"); 
 			}
-			rd = getServletContext().getRequestDispatcher("/MyWishList.jsp");
+			rd = getServletContext().getRequestDispatcher("/SearchLoanOffers.jsp");
 			rd.forward(request, response);
 		} else {
 			request.setAttribute("message", "Session Expired. Sign In Again!!!");

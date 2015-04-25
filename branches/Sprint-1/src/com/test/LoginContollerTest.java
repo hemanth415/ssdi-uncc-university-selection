@@ -43,7 +43,6 @@ public class LoginContollerTest extends Mockito{
 			verify(requestDispatcher).forward(request,response);
 			
 		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         

@@ -51,7 +51,7 @@ public class SearchLoanOfferController extends HttpServlet {
 		RequestDispatcher rd = null;
 		List<LoanOffersDTO> resultList = null;
 		LoanOffersDTO loanOffersDTO = null;
-		boolean result = false;
+		boolean offersFoundStatus = false;
 		if (session != null) {
 			loanOffersDTO = new LoanOffersDTO();
 			searchLoanOfferDAO = new SearchLoanOfferDAOImpl();
@@ -67,15 +67,15 @@ public class SearchLoanOfferController extends HttpServlet {
 					e.printStackTrace();
 				}
 				if(resultList != null && resultList.size()>0){
-					printResults(resultList); //Prints the Loan offers that are retrieved from the DataBase.
-					result = true;
+					printResults(resultList, session.getAttribute("userEmail")); 
+					offersFoundStatus = true;
 				}else{
 					request.setAttribute("message", "No Offers Found."); 
 				}
-				request.setAttribute("result", result);
-				request.setAttribute("resultList", resultList);
+				session.setAttribute("offersFoundStatus", offersFoundStatus);
+				session.setAttribute("resultList", resultList);
 				session.setAttribute("loanOffers", resultList);
-				session.setAttribute("loanOffersResult", result);
+				session.setAttribute("loanOffersResult", offersFoundStatus);
 				rd = getServletContext().getRequestDispatcher("/SearchLoanOffers.jsp");
 				rd.forward(request, response);
 			} else {
@@ -91,8 +91,10 @@ public class SearchLoanOfferController extends HttpServlet {
 		}
 	}
 	
-	private void printResults(List<LoanOffersDTO> resultList){
+	private void printResults(List<LoanOffersDTO> resultList, Object object){
+		//System.out.println("Search results for: " +object.toString());
 		for(LoanOffersDTO post: resultList){
+			System.out.println(post.getPostId());
 			System.out.println(post.getBankName());
 			System.out.println(post.getLoanOfficerName());
 			System.out.println(post.getBankerContactNum());
