@@ -62,4 +62,14 @@ public class Constants {
 	public final static String DELETE_FROM_WISH_LIST = "DELETE FROM  wish_list WHERE post_id=? and user_id=?";
 	
 	public final static String GET_STATUS_WISH_LIST = "SELECT * FROM wish_list WHERE post_id=? and user_id=?";
+	
+	public final static String FETCH_WISH_LIST = "SELECT * FROM wish_list WHERE user_id=?";
+	
+	public final static String FETCH_LOANOFFER_FOR_WISHLIST = "SELECT banker_id, interest_rate, max_amount, post_features, "
+															+ "mandatory_docs "
+															+ "from loan_offers where post_id=?";
+	
+	public final static String FETCH_BANKER_FOR_WISHLIST = "select bank_name, first_name, last_name, "
+															+ "bank_contact_no, bank_email_id "
+															+ "from bankers where banker_id=?";
 }

@@ -36,8 +36,7 @@ tr.odd {
 								<th><a href="/Sprint-1/universitySearch.jsp"> <b>
 											SEARCH UNIVERSITIES </b></a></th>
 								<th><a href="/Sprint-1/SearchLoanOffers.jsp?isHome=true"> <b> SEARCH BANKS </b></a></th>
-								<th><a href="edityourprofilelink"> <b> VIEW PROFILE
-									</b></a></th>
+								<th><a href="/Sprint-1/Buffer.jsp"><b>WISH LIST</b></a></th>
 							</tr>
 						</table>
 					</c:when>

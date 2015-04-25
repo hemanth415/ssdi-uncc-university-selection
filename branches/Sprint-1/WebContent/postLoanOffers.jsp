@@ -44,7 +44,7 @@
 	<form action="PostLoanOffersController"
 		onsubmit="return validateForm();" method="post">
 		<center>
-			<div>
+				<div>
 				<h1>Your University Your Bank</h1>
 				<h4 align="right">
 					Hello
@@ -60,9 +60,8 @@
 								<th><a href="/Sprint-1/studentHome.jsp"> <b> HOME </b></a></th>
 								<th><a href="/Sprint-1/universitySearch.jsp"> <b>
 											SEARCH UNIVERSITIES </b></a></th>
-								<th><a href="searchBank"> <b> SEARCH BANKS </b></a></th>
-								<th><a href="edityourprofilelink"> <b> VIEW PROFILE
-									</b></a></th>
+								<th><a href="/Sprint-1/SearchLoanOffers.jsp?isHome=true"> <b> SEARCH BANKS </b></a></th>
+								<th><a href="/Sprint-1/Buffer.jsp"><b>WISH LIST</b></a></th>
 							</tr>
 						</table>
 					</c:when>
@@ -74,7 +73,7 @@
 											SEARCH UNIVERSITIES </b></a></th>
 								<th><a href="/Sprint-1/studentProfiles.jsp"> <b>
 											STUDENT PROFILES </b></a></th>
-								<th><a href=""> <b> POSTS </b></a></th>
+								<th><a href="/Sprint-1/postLoanOffers.jsp"> <b> POSTS </b></a></th>
 							</tr>
 						</table>
 					</c:otherwise>

@@ -25,6 +25,41 @@ tr.odd {
 <body background="images/snowflakes_on_light_purple.gif">
 	<form action="SearchLoanOfferController" method="post">
 		<center>
+				<div>
+				<h1>Your University Your Bank</h1>
+				<h4 align="right">
+					Hello
+					<%=session.getAttribute("userName")%>
+					<br> <a href=""> <b> LOGOUT </b>
+					</a>
+				</h4>
+				<br>
+				<c:choose>
+					<c:when test="${sessionScope.userRole eq 83}">
+						<table>
+							<tr>
+								<th><a href="/Sprint-1/studentHome.jsp"> <b> HOME </b></a></th>
+								<th><a href="/Sprint-1/universitySearch.jsp"> <b>
+											SEARCH UNIVERSITIES </b></a></th>
+								<th><a href="/Sprint-1/SearchLoanOffers.jsp?isHome=true"> <b> SEARCH BANKS </b></a></th>
+								<th><a href="/Sprint-1/Buffer.jsp"><b>WISH LIST</b></a></th>
+							</tr>
+						</table>
+					</c:when>
+					<c:otherwise>
+						<table>
+							<tr>
+								<th><a href="/Sprint-1/welcome.jsp"> <b> HOME </b></a></th>
+								<th><a href="/Sprint-1/universitySearch.jsp"> <b>
+											SEARCH UNIVERSITIES </b></a></th>
+								<th><a href="/Sprint-1/studentProfiles.jsp"> <b>
+											STUDENT PROFILES </b></a></th>
+								<th><a href="/Sprint-1/postLoanOffers.jsp"> <b> POSTS </b></a></th>
+							</tr>
+						</table>
+					</c:otherwise>
+				</c:choose>
+			</div>
 			<div>
 				<table>
 					<tr>
