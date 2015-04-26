@@ -6,6 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>University Search</title>
+<style type="text/css">
+tr.even {
+	background: #dae5f4;
+}
+
+tr.odd {
+	background: #b8d1f3;
+}
+</style>
 </head>
 <body background="images/snowflakes_on_light_purple.jpg">
 	<form action="SearchUniversityController" method="post">
@@ -79,15 +88,15 @@
 					<br>
 					<br>
 					<table>
-						<tr align="left" bgcolor="blue">
+						<tr align="left" bgcolor="#41AAC4">
 							<th align="left" width="20%">University Name</th>
 							<th align="left" width="35%">University Description</th>
 							<th align="left" width="20%">University Address</th>
 							<th align="left" width="15%">University Contact</th>
 							<th align="left" width="10%">University E-Mail</th>
 						</tr>
-						<c:forEach items="${requestScope.uniList}" var="uni">
-							<tr>
+						<c:forEach items="${requestScope.uniList}" var="uni" varStatus="loop">
+							<tr class="${loop.index % 2 == 0 ? 'even' : 'odd'}">
 								<td><c:out value="${uni.universityName}"></c:out></td>
 								<td><c:out value="${uni.universityDesc}"></c:out></td>
 								<td><c:out value="${uni.address}"></c:out></td>

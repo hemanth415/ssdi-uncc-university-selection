@@ -84,10 +84,12 @@ public class LoginContoller extends HttpServlet {
             	}else{
             		userDTO = null;
             		message = "Password can't be empty";
+            		requestDispatcher = request.getRequestDispatcher("index.jsp");
             	}
             }else{
             	userDTO = null;
             	message = "Username can't be empty";
+            	requestDispatcher = request.getRequestDispatcher("index.jsp");
             }
         	request.setAttribute("message", message);
         	requestDispatcher.forward(request,response);

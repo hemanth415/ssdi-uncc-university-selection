@@ -28,7 +28,7 @@ public class LoginContollerTest extends Mockito{
 	}
 
 	@Test
-	public void testDoPostHttpServletRequestHttpServletResponse() {
+	public void testDoPostSuccess() {
 		HttpServletRequest request = mock(HttpServletRequest.class);       
         HttpServletResponse response = mock(HttpServletResponse.class);
         HttpSession session = mock(HttpSession.class);
@@ -38,6 +38,29 @@ public class LoginContollerTest extends Mockito{
         when(request.getParameter("userPassword")).thenReturn("123");
         when(request.getSession()).thenReturn(session);
         when(request.getRequestDispatcher("welcome.jsp")).thenReturn(requestDispatcher);
+        try {
+        	loginContoller.doPost(request, response);
+			verify(requestDispatcher).forward(request,response);
+			
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
+        
+        verify(request, atLeast(1)).getParameter("userName");
+	}
+	
+	
+	@Test
+	public void testDoPostWrongUserName() {
+		HttpServletRequest request = mock(HttpServletRequest.class);       
+        HttpServletResponse response = mock(HttpServletResponse.class);
+        HttpSession session = mock(HttpSession.class);
+        RequestDispatcher requestDispatcher = mock(RequestDispatcher.class);
+        //request.getSession(false);
+        when(request.getParameter("userName")).thenReturn("siva12113@gmail.com");
+        when(request.getParameter("userPassword")).thenReturn("123");
+        when(request.getSession()).thenReturn(session);
+        when(request.getRequestDispatcher("index.jsp")).thenReturn(requestDispatcher);
         try {
         	loginContoller.doPost(request, response);
 			verify(requestDispatcher).forward(request,response);

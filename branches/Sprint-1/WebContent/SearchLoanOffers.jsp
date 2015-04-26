@@ -7,12 +7,19 @@
 <!-- <link rel="stylesheet" type="text/css" href="SearchLoanOffers.css">  -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style type="text/css">
-tr.even {
+/* tr.even {
 	background: #80CEB9;
 }
 
 tr.odd {
 	background: #41AAC4;
+} */
+tr.even {
+	background: #dae5f4;
+}
+
+tr.odd {
+	background: #b8d1f3;
 }
 </style>
 <title>Search Loan Offers</title>
@@ -84,7 +91,7 @@ tr.odd {
 						</select></td>
 						<td>Loan Amount Required</td>
 						<td>
-						<td><input type="text" name="loanAmount"
+						<td><input type="number" name="loanAmount" min="0"
 							value="${requestScope.loanAmount}"></td>
 					</tr>
 				</table>
@@ -93,7 +100,8 @@ tr.odd {
 			<div>
 				<table>
 					<tr>
-						<td><input type="submit" value="Search" /></td>
+						<td><input type="submit" value="Search"
+							onclick="{form.action='SearchLoanOfferController';}" /></td>
 						<td><input type="reset" value="Reset" /></td>
 					</tr>
 				</table>
@@ -107,7 +115,7 @@ tr.odd {
 					<div align="left"></div>
 					<br>
 					<table>
-						<tr align="left" bgcolor="2F343A">
+						<tr align="left" bgcolor="#41AAC4">
 							<th align="left" width="7%">Bank Name</th>
 							<th align="left" width="10%">Offer Name</th>
 							<th align="left" width="10%">Loan Officer</th>
@@ -151,8 +159,9 @@ tr.odd {
 					</table>
 					<div align="center">
 						<c:if test="${sessionScope.loanOffersResult == true}">
-						<button type="submit" name="report" value="true"
-												onclick="{form.action='ExcelExportController';}">Excel Export</button>
+							<button type="submit" name="report" value="true"
+								onclick="{form.action='ExcelExportController';}">Excel
+								Export</button>
 							<!-- <input type="submit" value="Excel Export"></input> -->
 						</c:if>
 					</div>
