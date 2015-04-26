@@ -18,14 +18,15 @@ tr.odd {
 <title>Search Loan Offers</title>
 </head>
 <%
-	if("true".equalsIgnoreCase((String)request.getParameter("isHome"))){
-		session.setAttribute("offersFoundStatus",false);
+	if ("true"
+			.equalsIgnoreCase((String) request.getParameter("isHome"))) {
+		session.setAttribute("offersFoundStatus", false);
 	}
 %>
-<body background="images/snowflakes_on_light_purple.gif">
+<body background="images/snowflakes_on_light_purple.jpg">
 	<form action="SearchLoanOfferController" method="post">
 		<center>
-				<div>
+			<div>
 				<h1>Your University Your Bank</h1>
 				<h4 align="right">
 					Hello
@@ -41,7 +42,9 @@ tr.odd {
 								<th><a href="/Sprint-1/studentHome.jsp"> <b> HOME </b></a></th>
 								<th><a href="/Sprint-1/universitySearch.jsp"> <b>
 											SEARCH UNIVERSITIES </b></a></th>
-								<th><a href="/Sprint-1/SearchLoanOffers.jsp?isHome=true"> <b> SEARCH BANKS </b></a></th>
+								<th><a href="/Sprint-1/SearchLoanOffers.jsp?isHome=true">
+										<b> SEARCH BANKS </b>
+								</a></th>
 								<th><a href="/Sprint-1/Buffer.jsp"><b>WISH LIST</b></a></th>
 							</tr>
 						</table>
@@ -54,12 +57,14 @@ tr.odd {
 											SEARCH UNIVERSITIES </b></a></th>
 								<th><a href="/Sprint-1/studentProfiles.jsp"> <b>
 											STUDENT PROFILES </b></a></th>
-								<th><a href="/Sprint-1/postLoanOffers.jsp"> <b> POSTS </b></a></th>
+								<th><a href="/Sprint-1/postLoanOffers.jsp"> <b>
+											POSTS </b></a></th>
 							</tr>
 						</table>
 					</c:otherwise>
 				</c:choose>
 			</div>
+			<br>
 			<div>
 				<table>
 					<tr>
@@ -115,7 +120,8 @@ tr.odd {
 							<th align="left" width="24%">Loan details</th>
 							<th align="center" width="5%">ADD to WishList</th>
 						</tr>
-						<c:forEach var="element" items="${sessionScope.resultList}" varStatus="loop">
+						<c:forEach var="element" items="${sessionScope.loanOffers}"
+							varStatus="loop">
 							<tr class="${loop.index % 2 == 0 ? 'even' : 'odd'}">
 								<td>${element.bankName}</td>
 								<td>${element.offerName}</td>
@@ -128,22 +134,38 @@ tr.odd {
 								<td>${element.installments}</td>
 								<td>${element.loanDescription}</td>
 								<td align="center">
-        							<input type="submit" name="wishID" value="${element.postId}" 
-        								onclick="{form.action='WishListController';}" />
-        						</td>
+									<%-- <input type="submit" name="wishID" value="${element.postId}" 
+        								onclick="{form.action='WishListController';}" /> --%> <c:choose>
+										<c:when test="${element.wishListStatus == null}">
+											<button type="submit" name="add" value="${element.postId}"
+												onclick="{form.action='WishListController';}">ADD</button>
+										</c:when>
+										<c:otherwise>
+											<button type="submit" name="remove" value="${element.postId}"
+												onclick="{form.action='WishListController';}">Remove</button>
+										</c:otherwise>
+									</c:choose>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>
+					<div align="center">
+						<c:if test="${sessionScope.loanOffersResult == true}">
+						<button type="submit" name="report" value="true"
+												onclick="{form.action='ExcelExportController';}">Excel Export</button>
+							<!-- <input type="submit" value="Excel Export"></input> -->
+						</c:if>
+					</div>
 				</c:if>
 			</div>
 		</center>
 	</form>
-	<form action="ExcelExportController" method="post">
+	<%-- <form action="ExcelExportController" method="post">
 		<div align="center">
 			<c:if test="${sessionScope.loanOffersResult == true}">
 				<input type="submit" value="Excel Export"></input>
 			</c:if>
 		</div>
-	</form>
+	</form> --%>
 </body>
 </html>

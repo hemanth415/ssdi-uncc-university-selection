@@ -19,7 +19,7 @@ div.divMain {
 </style>
 <title>Login Application</title>
 </head>
-<body background="images/snowflakes_on_light_purple.gif">
+<body background="images/snowflakes_on_light_purple.jpg">
 	<form action="LoginContoller" method="post">
 		<div class="divMain" align="center">
 			<div>

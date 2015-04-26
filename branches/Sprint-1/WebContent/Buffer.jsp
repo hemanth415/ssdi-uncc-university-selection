@@ -14,7 +14,7 @@
       	}
 	  	</script>
 	</head>
-	<body  background="images/snowflakes_on_light_purple.gif" onLoad= "doSubmit()">
+	<body  background="images/snowflakes_on_light_purple.jpg" onLoad= "doSubmit()">
 	<form action="GetWishListDataController" method="post">
 		<!-- <input type="submit" id="butClick" name="butClick" value="click me">  -->   
 	</form>

@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.connection.MySQLConnection;
 import com.dao.SearchLoanOfferDAO;
 import com.dto.LoanOffersDTO;
+import com.dto.WishListDTO;
 import com.utils.Constants;
 import com.utils.EMICalculationUtil;
 
@@ -96,6 +99,30 @@ public class SearchLoanOfferDAOImpl extends MySQLConnection implements SearchLoa
 				EMICalculationUtil.calculateInstallment(loanOffersResultDTO);
 				loanOffersResultDTO.setPrePaymentValue(resultSet.getInt("prePayment") == 0? "No":"Yes");
 				searchResultsList.add(loanOffersResultDTO);
+			}
+		} catch(Exception e){
+			throw e;
+		}
+		return searchResultsList;
+	}
+
+	@Override
+	public Map<Integer,WishListDTO> fetchWishList(int userId) throws Exception {
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet  resultSet = null;
+		Map<Integer,WishListDTO> searchResultsList = new HashMap<Integer,WishListDTO>();
+		WishListDTO wishListDTO = null;
+		
+		try{
+			conn = getConnection();
+			preparedStatement = conn.prepareStatement(Constants.FETCH_WISH_LIST);
+			preparedStatement.setInt(1, userId);
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				wishListDTO = new WishListDTO();
+				wishListDTO.setPostId(resultSet.getInt("post_id"));
+				searchResultsList.put(wishListDTO.getPostId(), wishListDTO);
 			}
 		} catch(Exception e){
 			throw e;

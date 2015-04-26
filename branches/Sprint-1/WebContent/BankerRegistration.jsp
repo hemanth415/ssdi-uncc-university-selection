@@ -73,7 +73,7 @@
 	}
 </script>
 </head>
-<body background="images/snowflakes_on_light_purple.gif">
+<body background="images/snowflakes_on_light_purple.jpg">
 	<form action="BankerRegistrationController"
 		onsubmit="return validateForm();" method="post">
 		<h2 align="center">Banker Registration</h2>

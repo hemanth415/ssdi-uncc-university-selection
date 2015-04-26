@@ -1,6 +1,9 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +14,9 @@ import javax.servlet.http.HttpSession;
 
 import com.dao.WishListDAO;
 import com.daoImpl.WishListDAOImpl;
+import com.dto.LoanOffersDTO;
 import com.dto.WishListDTO;
+import com.utils.ValidatorUtils;
 
 /**
  * Servlet implementation class WishListController
@@ -45,6 +50,7 @@ public class WishListController extends HttpServlet {
 		
 		RequestDispatcher rd = null;
 		boolean result = false;
+		char status = ' ';
 		
 		if (session != null) {
 			WishListDTO wishListDTO = new WishListDTO();
@@ -57,7 +63,13 @@ public class WishListController extends HttpServlet {
 				//System.out.println("User ID = "+session.getAttribute("userId"));
 			}
 			
-			wishListDTO.setPostId(Integer.parseInt(request.getParameter("wishID")));
+			if(ValidatorUtils.validateString(request.getParameter("add"))){
+				wishListDTO.setPostId(Integer.parseInt(request.getParameter("add")));
+				status = 'A';
+			}else if (ValidatorUtils.validateString(request.getParameter("remove"))){
+				wishListDTO.setPostId(Integer.parseInt(request.getParameter("remove")));
+				status = 'R';
+			}
 			wishListDTO.setUserId((int) session.getAttribute("userId"));
 				
 			result = wishListDAO.saveToWishList(wishListDTO);
@@ -66,6 +78,23 @@ public class WishListController extends HttpServlet {
 				request.setAttribute("message", "Item added to WishList");
 			}else{
 				request.setAttribute("message", "Item deleted from WishList"); 
+			}
+			@SuppressWarnings("unchecked")
+			List<LoanOffersDTO> resultList = (List<LoanOffersDTO> )session.getAttribute("loanOffers");
+			if(resultList != null && resultList.size()>0){
+				List<LoanOffersDTO> exactResult =  new ArrayList<LoanOffersDTO>();
+				for(LoanOffersDTO dto: resultList){
+					if(wishListDTO.getPostId() == dto.getPostId()){
+						if(status == 'A'){
+							dto.setWishListStatus("true");
+						}else{
+							dto.setWishListStatus(null);
+						}
+					}
+					exactResult.add(dto);
+				}
+				resultList = new ArrayList<LoanOffersDTO>();
+				resultList.addAll(exactResult);
 			}
 			rd = getServletContext().getRequestDispatcher("/SearchLoanOffers.jsp");
 			rd.forward(request, response);
