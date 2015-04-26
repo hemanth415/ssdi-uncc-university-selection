@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class Constants {
 	
-	public final static String SEARCH_UNIV_BY_COUNTRY_STATE = "select university_name,university_desc,address,contact_no,email_id from universities as a join location as b on a.location_id=b.location_id where UPPER(b.country)=? and UPPER(b.state) = ?";
+	public final static String SEARCH_UNIV_BY_COUNTRY_STATE = "select university_name,university_desc,address,contact_no,email_id from universities as a join location as b on a.location_id=b.location_id where university_id<>1 and UPPER(b.country)=? and UPPER(b.state) = ?";
 
 	public final static String SEARCH_UNIV_BY_NAME = "select university_name,university_desc,address,contact_no,email_id from universities where UPPER(university_name) = ?";
 	
