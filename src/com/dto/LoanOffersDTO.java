@@ -28,7 +28,7 @@ public class LoanOffersDTO implements Serializable{
 	private String offerName;
 	private String prePaymentValue;
 	private int postId;
-	
+	private String wishListStatus;
 	/**
 	 * @return the universityID
 	 */
@@ -208,5 +208,17 @@ public class LoanOffersDTO implements Serializable{
 	 */
 	public void setPostId(int postId) {
 		this.postId = postId;
+	}
+	/**
+	 * @return the wishListStatus
+	 */
+	public String getWishListStatus() {
+		return wishListStatus;
+	}
+	/**
+	 * @param wishListStatus the wishListStatus to set
+	 */
+	public void setWishListStatus(String wishListStatus) {
+		this.wishListStatus = wishListStatus;
 	}
 }

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Student Home</title>
 </head>
-<body background="images/snowflakes_on_light_purple.gif">
+<body background="images/snowflakes_on_light_purple.jpg">
 <div align="center">
 	<h1>Your University Your Bank</h1>
 		<h4 align="right">

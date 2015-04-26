@@ -16,7 +16,7 @@ tr.odd {
 </style>
 <title>Student Profile</title>
 </head>
-<body background="images/snowflakes_on_light_purple.gif">
+<body background="images/snowflakes_on_light_purple.jpg">
 	<form action="StudentProfileController" method="post">
 		<center>
 			<div>

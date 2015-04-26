@@ -40,7 +40,7 @@
 </script>
 </head>
 
-<body background="images/snowflakes_on_light_purple.gif">
+<body background="images/snowflakes_on_light_purple.jpg">
 	<form action="PostLoanOffersController"
 		onsubmit="return validateForm();" method="post">
 		<center>

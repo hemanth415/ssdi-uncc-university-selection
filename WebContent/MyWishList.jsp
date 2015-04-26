@@ -10,7 +10,7 @@
 	
 </head>
 
-<body background="images/snowflakes_on_light_purple.gif">
+<body background="images/snowflakes_on_light_purple.jpg">
 	<form action="GetWishListDataController" method="post">
 		<center>
 					<div>
