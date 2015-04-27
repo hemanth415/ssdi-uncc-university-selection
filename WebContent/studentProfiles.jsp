@@ -7,11 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <style type="text/css">
 tr.even {
-	background: #80CEB9;
+	background: #dae5f4;
 }
 
 tr.odd {
-	background: #41AAC4;
+	background: #b8d1f3;
 }
 </style>
 <title>Student Profile</title>
@@ -81,7 +81,7 @@ tr.odd {
 					<br>
 					<br>
 					<table>
-						<tr align="left" bgcolor="2F343A">
+						<tr align="left" bgcolor="#41AAC4">
 							<th align="left"><font color="white">Student Name</font></th>
 							<th align="left"><font color="white">Address</font></th>
 							<th align="left"><font color="white">Applied Term</font></th>
