@@ -14,6 +14,9 @@
 		var mandtoryDocs = document.getElementById("mandtoryDocsID");
 		var interestRate = document.getElementById("interestRateID");
 		var maxLoanAmount = document.getElementById("maxLoanAmountID");
+		var maxDuration = document.getElementById("maxDurationID");
+		
+		
 		
 		if (postName.value.length <= 0) {
 			 alert("Please enter a name for your post");
@@ -30,6 +33,10 @@
 		} else if ((isNaN(interestRate.value)) || (interestRate.value.indexOf(" ") != -1) || 
 								(interestRate.value.length <= 0)) {
 				alert("Incorrect format. Please enter a valid interest rate");
+			 return false;
+		} else if (isNaN(maxDuration.value) || (maxDuration.value.indexOf(" ") != -1) ||
+				(maxDuration.value.length <= 0)) {
+			 alert("Please enter the maximum duration");
 			 return false;
 		} else if (isNaN(maxLoanAmount.value) || (maxLoanAmount.value.indexOf(" ") != -1) ||
 											(maxLoanAmount.value.length <= 0)) {
@@ -116,28 +123,28 @@
 
 				<tr>
 					<td>Interest rate(in numbers)</td>
-					<td><input type="text" name="interestRate" id="interestRateID"
+					<td><input type="number" name="interestRate" id="interestRateID" min="0" max="100"
 						value="${requestScope.interestRate}"></td>
 				</tr>
 				
 				<tr>
 					<td>Duration(in months)</td>
-					<td><input type="text" name="maxDuration" id="maxDurationID" placeholder="Max"
+					<td><input type="number" name="maxDuration" id="maxDurationID" placeholder="Max"
 						value="${requestScope.maxDuration}"></td>
 				</tr>
 
 				<tr>
 					<td>Loan amount(in numbers)</td>
-					<td><input type="text" name="minLoanAmount" placeholder="Min"
+					<td><input type="number" name="minLoanAmount" placeholder="Min"
 						id="minLoanAmountID" value="${requestScope.minLoanAmount}"></td>
 					<td>to</td>
-					<td><input type="text" name="maxLoanAmount" id="maxLoanAmountID" placeholder="Max"
+					<td><input type="number" name="maxLoanAmount" id="maxLoanAmountID" placeholder="Max"
 						value="${requestScope.maxLoanAmount}"></td>
 				</tr>
 
 				<tr>
 					<td>Processing Fee(% of loan amount)</td>
-					<td><input type="text" name="processingFee" id="processingFeeID"
+					<td><input type="number" name="processingFee" id="processingFeeID" min="0" max="100"
 						value="${requestScope.processingFee}"></td>
 				</tr>
 				
