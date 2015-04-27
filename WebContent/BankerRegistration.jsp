@@ -120,7 +120,7 @@
 
 			<tr>
 				<td>Contact :</td>
-				<td><input type="text" name="bankerContactNum"
+				<td><input type="number" name="bankerContactNum" maxlength="10"
 					id="bankerContactNumID" value="${requestScope.bankerContactNum}"></td>
 			</tr>
 
@@ -144,7 +144,7 @@
 
 			<tr>
 				<td>Bank Contact:</td>
-				<td><input type="text" name="bankContactNum"
+				<td><input type="number" name="bankContactNum" maxlength="10"
 					id="bankContactNumID" value="${requestScope.bankContactNum}"></td>
 			</tr>
 

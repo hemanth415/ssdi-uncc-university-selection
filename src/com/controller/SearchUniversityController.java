@@ -90,6 +90,8 @@ public class SearchUniversityController extends HttpServlet {
 				}
 				message = "Obtained search result: " + resultList.size();
 				result = true;
+			}else{
+				message = "No Data found For the combination";
 			}
 			request.setAttribute("result", result);
 			request.setAttribute("uniList", resultList);

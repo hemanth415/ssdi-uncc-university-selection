@@ -24,7 +24,7 @@ tr.odd {
 				<h4 align="right">
 					Hello
 					<%=session.getAttribute("userName")%>
-					<br> <a href=""> <b> LOGOUT </b>
+					<br> <a href="Logout"> <b> LOGOUT </b>
 					</a>
 				</h4>
 				<br>
