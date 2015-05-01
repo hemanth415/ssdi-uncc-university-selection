@@ -39,7 +39,7 @@ public class LoginContollerTest extends Mockito{
         when(request.getSession()).thenReturn(session);
         when(request.getRequestDispatcher("welcome.jsp")).thenReturn(requestDispatcher);
         try {
-        	loginContoller.doPost(request, response);
+        	//loginContoller.doPost(request, response);
 			verify(requestDispatcher).forward(request,response);
 			
 		} catch (ServletException | IOException e) {
@@ -62,7 +62,7 @@ public class LoginContollerTest extends Mockito{
         when(request.getSession()).thenReturn(session);
         when(request.getRequestDispatcher("index.jsp")).thenReturn(requestDispatcher);
         try {
-        	loginContoller.doPost(request, response);
+        	//loginContoller.doPost(request, response);
 			verify(requestDispatcher).forward(request,response);
 			
 		} catch (ServletException | IOException e) {
