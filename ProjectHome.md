@@ -1,0 +1,1 @@
+This application would provide guidance to registered international students in selecting the universities. Financing for higher education is generally taken care by banks. So we intend to create a module in our application where international students can compare the loan policies, repayment structure of various banks.
